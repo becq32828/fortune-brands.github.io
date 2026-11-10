@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Fortune Brands · Microsoft 365 Copilot Training · Follow along</title><style>
+:root{
+  --bg:#ffffff;
+  --page:#F4F7FA;
+  --surface:#ffffff;
+  --surface-alt:#EEF3F8;
+  --ink:#161616;
+  --ink-soft:#424242;
+  --ink-faint:#6b6b6b;
+  --line:#D9E2EC;
+  --line-strong:#c8c6c4;
+  --brand:#1C4D78;
+  --brand-soft:#E8EFF6;
+  --accent:#9A6F12;
+  --accent-soft:#FBF4E6;
+  --green:#1C4D78;
+  --green-soft:#E8EFF6;
+  --amber:#8A6418;
+  --amber-soft:#FBF4E6;
+  --code-bg:#f8f8f8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#1b1a19;--page:#141313;--surface:#252423;--surface-alt:#2f2e2d;
+    --ink:#f3f3f3;--ink-soft:#d4d4d4;--ink-faint:#a6a6a6;
+    --line:#3b3a39;--line-strong:#4f4d4b;
+    --brand:#8FB8DE;--brand-soft:#132638;
+    --accent:#E2B65A;--accent-soft:#2E2512;
+    --green:#8FB8DE;--green-soft:#132638;
+    --amber:#E2B65A;--amber-soft:#2E2512;
+    --code-bg:#1f1e1d;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-block-start:70px}
+body{
+  margin:0;background:var(--page);color:var(--ink);
+  font-family:"Segoe UI","Segoe UI Web (West European)",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.6;
+}
+a{color:var(--brand)}
+.wrap{max-width:1140px;margin-inline:auto;padding-inline:24px}
+
+/* ---- Title banner ---- */
+.banner{background:var(--surface);border-block-end:1px solid var(--line);padding-block:30px 24px}
+.crumb{font-size:.82rem;color:var(--ink-faint);margin-block-end:10px}
+.crumb span{margin-inline:6px}
+.banner h1{margin:0 0 8px;font-size:2.1rem;font-weight:600;line-height:1.2}
+.banner p.lede{margin:0;max-width:70ch;color:var(--ink-soft)}
+.meta{margin-block-start:14px;font-size:.88rem;color:var(--ink-faint)}
+
+/* ---- At a glance ---- */
+.glance{
+  background:var(--surface-alt);border:1px solid var(--line);border-radius:6px;
+  padding:16px 20px;margin-block-start:22px;
+  display:grid;grid-template-columns:1fr;gap:12px;
+}
+@media (min-width:720px){.glance{grid-template-columns:repeat(4,1fr)}}
+.glance div b{display:block;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin-block-end:3px}
+.glance div span{font-size:.9rem;color:var(--ink)}
+
+/* ---- Layout: rail + content ---- */
+.layout{display:grid;grid-template-columns:1fr;gap:34px;padding-block:34px 60px;align-items:start}
+@media (min-width:1000px){.layout{grid-template-columns:252px 1fr}}
+aside.rail{position:sticky;top:20px;font-size:.88rem}
+aside.rail h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin:0 0 10px}
+aside.rail ol{list-style:none;margin:0;padding:0;border-inline-start:2px solid var(--line)}
+aside.rail li a{
+  display:block;padding:6px 0 6px 14px;text-decoration:none;color:var(--ink-soft);
+  margin-inline-start:-2px;border-inline-start:2px solid transparent;
+}
+aside.rail li a:hover{color:var(--brand);border-inline-start-color:var(--brand)}
+aside.rail li a.new::after{
+  content:"New";margin-inline-start:7px;font-size:.66rem;font-weight:700;
+  background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:999px;vertical-align:middle;
+}
+
+/* ---- Content blocks ---- */
+section{margin-block-end:40px;scroll-margin-block-start:24px}
+h2.sec{font-size:1.55rem;font-weight:600;margin:0 0 4px;padding-block-end:8px;border-block-end:1px solid var(--line)}
+h2.sec .dur{font-size:.85rem;font-weight:400;color:var(--ink-faint);margin-inline-start:10px}
+p.intro{color:var(--ink-soft);margin-block:12px 18px;max-width:78ch}
+
+.note{
+  background:var(--amber-soft);border:1px solid var(--line);border-inline-start:4px solid var(--amber);
+  border-radius:4px;padding:16px 20px;
+}
+.note h3{margin:0 0 10px;font-size:1rem;color:var(--amber)}
+.note ul{margin:0;padding-inline-start:20px}
+.note li{margin-block-end:7px;color:var(--ink-soft)}
+.note li b{color:var(--ink)}
+
+/* ---- Module card, Learn style ---- */
+.module{background:var(--surface);border:1px solid var(--line);border-radius:6px;margin-block-end:22px;overflow:hidden}
+.module > header{padding:18px 22px 16px;border-block-end:1px solid var(--line)}
+.kicker{font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--brand)}
+.module h3{margin:5px 0 6px;font-size:1.22rem;font-weight:600}
+.module .facts{font-size:.85rem;color:var(--ink-faint)}
+.module .facts b{color:var(--ink-soft);font-weight:600}
+.module .desc{margin:10px 0 0;color:var(--ink-soft);font-size:.95rem;max-width:80ch}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-block-start:12px}
+.tag{font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:3px;border:1px solid var(--line-strong);background:var(--surface-alt);color:var(--ink-soft)}
+.tag.tool{background:var(--brand-soft);color:var(--brand);border-color:transparent}
+.tag.prod{background:var(--green-soft);color:var(--green);border-color:transparent}
+.tag.cw{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+
+/* ---- Unit outline ---- */
+ol.units{list-style:none;margin:0;padding:0}
+ol.units > li{border-block-end:1px solid var(--line);padding:16px 22px}
+ol.units > li:last-child{border-block-end:none}
+.unit-head{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+.unit-head .u{
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-faint);min-width:72px;
+}
+.unit-head h4{margin:0;font-size:1rem;font-weight:600}
+.unit-head .time{font-size:.8rem;color:var(--ink-faint)}
+.unit-body{margin-block-start:8px}
+.unit-body p{margin:0 0 10px;color:var(--ink-soft);font-size:.94rem;max-width:80ch}
+.usecase{font-size:.94rem;color:var(--ink-soft);margin:0 0 10px}
+.usecase b{color:var(--ink)}
+.lanes{display:grid;grid-template-columns:1fr;gap:10px;margin-block-end:12px}
+@media (min-width:680px){.lanes{grid-template-columns:1fr 1fr}}
+.lane{border:1px solid var(--line);border-radius:4px;padding:10px 13px;background:var(--bg);font-size:.88rem;color:var(--ink-soft)}
+.lane b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);margin-block-end:3px}
+.plabel{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-block:14px 6px}
+/* ---- Copy button on each prompt ---- */
+.promptwrap{position:relative}
+.promptwrap pre.prompt{padding-inline-end:92px}
+.copybtn{
+  position:absolute;inset-block-start:8px;inset-inline-end:8px;
+  font-family:inherit;font-size:.74rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;cursor:pointer;
+  padding:5px 12px;border-radius:4px;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);
+  transition:background .12s,color .12s,border-color .12s;
+}
+.copybtn:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+.copybtn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.copybtn[data-state="done"]{background:var(--green);color:#fff;border-color:var(--green)}
+.copybtn[data-state="fail"]{background:var(--amber-soft);color:var(--amber);border-color:var(--amber)}
+@media print{.copybtn{display:none}.promptwrap pre.prompt{padding-inline-end:16px}}
+pre.prompt{
+  margin:0;background:var(--code-bg);border:1px solid var(--line);border-inline-start:3px solid var(--brand);
+  border-radius:4px;padding:13px 16px;font-family:"Cascadia Mono",Consolas,"Courier New",monospace;
+  font-size:.855rem;line-height:1.55;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere;
+}
+pre.prompt.cw{border-inline-start-color:var(--accent)}
+pre.prompt.weak{border-inline-start-color:var(--line-strong);color:var(--ink-faint)}
+.takeaway{
+  background:var(--brand-soft);border-radius:4px;padding:11px 15px;font-size:.9rem;color:var(--ink-soft);
+}
+.takeaway b{color:var(--brand)}
+
+/* ---- Tables ---- */
+table{border-collapse:collapse;width:100%;font-size:.89rem;margin-block-start:12px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:start;vertical-align:top}
+th{background:var(--surface-alt);font-weight:600}
+caption{caption-side:top;text-align:start;font-size:.85rem;color:var(--ink-faint);padding-block-end:6px}
+
+.cards3{display:grid;grid-template-columns:1fr;gap:14px;margin-block-start:14px}
+@media (min-width:760px){.cards3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:15px 18px}
+.card h4{margin:0 0 6px;font-size:1rem}
+.card p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+
+ul.plain{margin:10px 0 0;padding-inline-start:20px}
+ul.plain li{margin-block-end:7px;color:var(--ink-soft)}
+ul.plain li b{color:var(--ink)}
+
+footer.page{border-block-start:1px solid var(--line);padding-block:24px 40px;color:var(--ink-faint);font-size:.86rem}
+footer.page p{margin:0 0 6px;max-width:85ch}
+
+@media print{
+  aside.rail{display:none}
+  .layout{grid-template-columns:1fr}
+  .module{break-inside:avoid}
+  body{background:#fff}
+}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.placeholder{background:#fff4ce;color:#5c4400;border:1px dashed #b98a00;border-radius:3px;padding:1px 6px;font-weight:700;white-space:normal}
+@media (prefers-color-scheme: dark){.placeholder{background:#3d3214;color:#ffd978;border-color:#c99a1f}}
+mark.br{background:#fff4ce;color:inherit;border-radius:2px;padding:0 2px}
+@media (prefers-color-scheme: dark){mark.br{background:#4a3c12}}
+.quick{background:var(--brand-soft);border:1px solid var(--line);border-inline-start:4px solid var(--brand);border-radius:6px;padding:18px 22px}
+.quick h2{margin:0 0 8px;font-size:1.15rem}
+ol.quicksteps{margin:0;padding-inline-start:22px}
+ol.quicksteps li{margin-block-end:8px;color:var(--ink-soft)}
+ol.quicksteps li b{color:var(--ink)}
+.quicknote{margin:10px 0 0;font-size:.9rem;color:var(--ink-soft)}
+.copybtn{background:var(--brand);color:#fff;border-color:var(--brand);font-size:.8rem;padding:6px 14px}
+.copybtn:hover{filter:brightness(1.1)}
+.files{display:block;margin-block-start:6px;font-size:.8rem;color:var(--ink-faint)}
+.caution{font-size:.86rem;color:var(--amber);margin:4px 0 8px}
+.tag.caution-tag{background:var(--amber-soft);color:var(--amber);border-color:transparent}
+.tag.src-itw{background:var(--green-soft);color:var(--green);border-color:transparent}
+table.agenda td.clock{white-space:nowrap;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+table.anatomy{margin-block-end:6px}
+.checks{display:grid;grid-template-columns:1fr;gap:8px;margin-block:6px 4px}
+@media (min-width:680px){.checks{grid-template-columns:1fr 1fr}}
+.checks div{border:1px solid var(--line);border-radius:4px;padding:9px 12px;background:var(--bg);font-size:.92rem}
+.checks span,.steps3 span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--brand);color:#fff;font-size:.75rem;font-weight:700;margin-inline-end:8px}
+.steps3{display:grid;grid-template-columns:1fr;gap:10px;margin-block:4px 18px}
+@media (min-width:760px){.steps3{grid-template-columns:repeat(3,1fr)}}
+.steps3 div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:.92rem;color:var(--ink-soft)}
+.libtools{position:sticky;top:0;z-index:2;background:var(--page);padding-block:10px 6px}
+#libsearch{width:100%;font:inherit;padding:10px 14px;border:1px solid var(--line-strong);border-radius:6px;background:var(--surface);color:var(--ink)}
+#libsearch:focus{outline:2px solid var(--brand);outline-offset:1px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-block-start:10px}
+.chip{font:inherit;font-size:.8rem;padding:4px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);cursor:pointer}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.libcount{font-size:.8rem;color:var(--ink-faint);margin:8px 0 0}
+h3.libgroup{font-size:1.05rem;margin:22px 0 10px}
+.libgrid{display:grid;grid-template-columns:1fr;gap:14px}
+.libcard{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+.libhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.libhead h4{margin:0;font-size:1rem}
+.libhead .tags{margin:0}
+.libmeta{font-size:.82rem;color:var(--ink-faint);margin:4px 0 10px}
+.libmeta b{color:var(--ink-soft)}
+.libempty{color:var(--ink-faint)}
+.toast{position:fixed;inset-block-end:20px;inset-inline-start:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:6px;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.toast.show{opacity:1}
+@media print{.libtools,.toast{display:none}}
+.dl{font-weight:700;overflow-wrap:anywhere}
+.banner{background:#0F2E4A;color:#fff;border-block-end:4px solid #C9972C}
+.banner h1{color:#fff}.banner p.lede{color:#DCE6F0}.banner .meta,.banner .crumb{color:#B9C9DA}
+.banner .crumb b{color:#C9972C;letter-spacing:.12em}
+.banner .glance{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
+.banner .glance div b{color:#C9972C}.banner .glance div span{color:#fff}
+.kicker{color:var(--accent)}
+h2.sec{border-block-end:2px solid #C9972C}
+.tag.src-fb{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.ph{background:#fff4ce;color:#5c4400;border:1px dashed #b98a00;border-radius:3px;padding:1px 6px;font-weight:700}
+.tip{border-inline-start:4px solid #C9972C;background:var(--accent-soft);border-radius:4px;padding:10px 14px;font-size:.9rem;color:var(--ink-soft);margin-block:10px}
+.tip b{color:var(--ink)}
+
+/* Fortune Brands navy + gold */
+h2.sec,.module h3,.card h4,.quick h2,h3.libgroup{color:var(--brand)}
+.module > header{background:linear-gradient(0deg,var(--surface),var(--brand-soft));border-block-start:4px solid #C9972C}
+aside.rail li a:hover{color:var(--brand);border-inline-start-color:#C9972C}
+aside.rail ol{border-inline-start-color:#C9972C55}
+th{background:var(--brand);color:#fff;border-color:var(--brand)}
+.card{border-block-start:3px solid #C9972C}
+.copybtn{background:var(--brand);border-color:var(--brand)}
+.copybtn:hover{background:#C9972C;border-color:#C9972C;color:#0F2E4A;filter:none}
+.copybtn[data-state="done"]{background:#C9972C;border-color:#C9972C;color:#0F2E4A}
+pre.prompt{border-inline-start-color:#C9972C}
+.chip.on{background:var(--brand);border-color:var(--brand)}
+.lane.laneA{background:var(--surface-alt);border-inline-start:4px solid var(--brand)}
+.lane.laneB{background:var(--accent-soft);border-inline-start:4px solid #C9972C}
+.lane.laneA b{color:var(--brand)}.lane.laneB b{color:var(--accent)}
+.lane{margin-block-end:10px}
+.unit-head .u{color:var(--accent)}
+.takeaway{border-inline-start:4px solid var(--brand)}
+.quick{border-inline-start-color:#C9972C}
+footer.page{border-block-start:3px solid #C9972C}
+.banner{background:linear-gradient(120deg,#0F2E4A 0%,#1C4D78 100%)}
+@media (prefers-color-scheme: dark){th{background:#163B5E;border-color:#163B5E}}
+</style></head>
+<body><div class="banner"><div class="wrap"><div class="crumb"><b>FORTUNE BRANDS</b> <span>›</span> Microsoft 365 Copilot <span>›</span> Licensed user training</div><h1>Microsoft 365 Copilot Training · follow along</h1><p class="lede">Four areas, from market research to the executive briefing. The instructor demonstrates each one on a made-up <b>Moen kitchen faucet and Smart Water</b> scenario (Lane A). Then you run the same prompt on <b>your own work</b> (Lane B).</p><p class="meta">Tuesday 10 November 2026 · 9:30 – 11:00 AM ET (8:30 – 10:00 AM CT) · 90 minutes, including 15 minutes of Q&amp;A · Keep this page open beside Copilot.</p><div class="glance"><div><b>Level</b><span>All levels, from new users to daily users</span></div><div><b>Audience</b><span>Fortune Brands employees with a Microsoft 365 Copilot license</span></div><div><b>Runs on</b><span>Copilot Chat · Researcher · Analyst · Word, Excel, PowerPoint, Outlook, Teams</span></div><div><b>Format</b><span>Lane A instructor demo → Lane B your turn → Challenge</span></div></div></div></div>
+<div class="wrap layout"><aside class="rail"><h2>On this page</h2><ol><li><a href="#start">How to use this page</a></li><li><a href="#how">Today at a glance</a></li><li><a href="#exp">The Copilot experience</a></li><li><a href="#a1">1 · Explore the market</a></li><li><a href="#a2">2 · Turn data into a decision</a></li><li><a href="#a3">3 · Compress the document pile</a></li><li><a href="#a4">4 · Prepare the executive briefing</a></li><li><a href="#library">Prompt library</a></li><li><a href="#builder">Build a reusable prompt</a></li><li><a href="#pack">Instructor sample files</a></li><li><a href="#after">After today</a></li><li><a href="#followup">Appendix · Coming next</a></li></ol></aside><main><section id="start" class="quick"><h2>How to use this page</h2><ol class="quicksteps">
+<li><b>Open Copilot</b> at <b>m365.cloud.microsoft</b>, in the Microsoft 365 Copilot app, or in Teams, and keep this page open beside it. Keep the <b>Work</b> tab selected so Copilot can use your mail, chats, meetings and files.</li>
+<li><b>Have your own work ready</b>: a recent email thread, a meeting you attended, a document and a spreadsheet you own. You will practice on your own work.</li><li><b>Click Copy</b> on any prompt, paste it into Copilot, and replace anything in <mark class="br">[brackets]</mark>.</li>
+<li><b>Two lanes.</b> <b>Lane A</b> is the instructor's demo on fictional sample files. Just watch. <b>Lane B</b> is your turn: run the prompt on your own work, on your own screen, where nobody else can see it.</li></ol>
+<p class="quicknote"><b>Can't find Researcher or Analyst?</b> Look under <b>Agents</b> in the left pane of Copilot. If they are not there, run the same prompt in Copilot Chat. The answer is less detailed, but the lesson is the same.</p></section><section id="how"><h2 class="sec">Today at a glance</h2><p class="intro">Ninety minutes: about 75 minutes of demos and hands-on practice, then 15 minutes for your questions. After a short tour of the Copilot experience, there are four practice areas. Each one runs through the same three units.</p>
+<table class="agenda"><tr><th style="width:18%">Clock</th><th>Block</th><th style="width:34%">Runs on</th></tr>
+<tr><td class="clock">0:00 – 0:05</td><td><b>Welcome and how this works</b></td><td></td></tr>
+<tr><td class="clock">0:05 – 0:15</td><td><b>The Copilot experience</b>: Work and Web, Auto and model choice, agents, the four-part prompt</td><td>Copilot Chat</td></tr>
+<tr><td class="clock">0:15 – 0:30</td><td><b>1 · Explore the market</b></td><td>Researcher</td></tr>
+<tr><td class="clock">0:30 – 0:45</td><td><b>2 · Turn data into a decision</b></td><td>Analyst · Copilot in Excel</td></tr>
+<tr><td class="clock">0:45 – 1:00</td><td><b>3 · Compress the document pile</b></td><td>Copilot Chat · Copilot in Word</td></tr>
+<tr><td class="clock">1:00 – 1:15</td><td><b>4 · Prepare the executive briefing</b></td><td>Outlook · Teams · Word · PowerPoint</td></tr>
+<tr><td class="clock">1:15 – 1:30</td><td><b>Questions, the prompt library and what comes next</b></td><td></td></tr></table>
+<div class="cards3"><div class="card"><h4>Unit 1 · Watch · 5 min</h4><p><b>Lane A.</b> The instructor runs the scenario on fictional Moen sample data. You watch.</p></div><div class="card"><h4>Unit 2 · Your turn · 6 min</h4><p><b>Lane B.</b> You run the same kind of prompt on your own work, on your own screen.</p></div><div class="card"><h4>Unit 3 · Challenge · 4 min</h4><p>A harder version of the same prompt for anyone who finishes early. Post one line of your result in the chat.</p></div></div>
+<h3 style="font-size:1.05rem;margin-block:26px 4px">What you will leave with</h3>
+<div class="cards3"><div class="card"><h4>The right tool for the job</h4><p>When to use Chat, Researcher, Analyst or Copilot inside Word, Excel, PowerPoint, Outlook and Teams, and when to let Copilot pick the model automatically.</p></div><div class="card"><h4>Prompts that produce decisions</h4><p>The four-part prompt plus the habits that turn a generic summary into something you can act on.</p></div><div class="card"><h4>A reusable kit</h4><p>Every prompt from today and a Fortune Brands prompt library, ready to copy. The instructor's sample files are yours to keep for later practice.</p></div></div>
+<p class="intro" style="margin-block-start:18px"><b>One ground rule.</b> Everything on the instructor's screen (Lane A) is made-up sample data, because this session is recorded and shared. Moen is used as a familiar Fortune Brands name, but every figure is fictional. On <i>your</i> screen (Lane B), use your own work. That is where the practice time pays off.</p></section><section id="exp"><h2 class="sec">The Copilot experience<span class="dur">0:05 – 0:15</span></h2><article class="module"><header><div class="kicker">Orientation · 10 min · 4 units</div><h3>Know where you are before you type</h3><div class="facts"><b>Runs on:</b> Copilot Chat · <b>Covers:</b> Work and Web, Auto and model choice, agents, the four-part prompt, responsible use</div><p class="desc"><b>Why this matters.</b> Most disappointing Copilot answers come from the wrong setting, not a bad tool. Spend ten minutes here and the rest of the session goes faster.</p><div class="tags"><span class="tag tool">Copilot Chat</span><span class="tag tool">Work / Web</span><span class="tag tool">Auto · Quick response · Think deeper</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Unit 1</span><h4>Work or Web: what can Copilot see?</h4><span class="time">3 min</span></div><div class="unit-body"><p><b>Work</b> grounds answers in your email, chats, meetings and files, always within the permissions you already have. <b>Web</b> uses public web content only. Same question, different answers. Try both.</p><div class="plabel">Work tab · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">What are the three most important things I need to follow up on this week, based on my email, Teams chats and meetings? For each, tell me who it involves, what they are waiting on, and link the source.</pre></div><div class="plabel">Switch to Web · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">What are the top three trends affecting U.S. residential plumbing and kitchen fixtures this year? Cite your sources.</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 2</span><h4>Auto, or choose the model yourself</h4><span class="time">3 min</span></div><div class="unit-body"><p>Leave the model picker on <b>Auto</b> and Copilot chooses for you. Choose <b>Quick response</b> when you want a fast draft or a simple answer. Choose <b>Think deeper</b> for multi-step reasoning, trade-offs or tricky analysis. It takes longer and shows its working. The names in the picker can vary as Microsoft updates Copilot.</p><div class="plabel">Run once on Quick response, then again on Think deeper. Compare the answers.</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">I lead a team that supports [your function] at Fortune Brands. We need to decide whether to [decision, for example: consolidate two weekly status meetings into one].
+Lay out the options, the trade-offs for each, what could go wrong, and give me a recommendation with your reasoning.</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 3</span><h4>The four-part prompt</h4><span class="time">2 min</span></div><div class="unit-body"><table class="anatomy"><tr><th style="width:18%">Part</th><th>Ask yourself</th><th>Example</th></tr><tr><td><b>Goal</b></td><td>What do I want?</td><td>"Draft a one-page update…"</td></tr><tr><td><b>Context</b></td><td>Who is it for, and why?</td><td>"…for my VP, who has five minutes before the business review…"</td></tr><tr><td><b>Source</b></td><td>What should it use?</td><td>"…using the Q3 memo and last week's leadership meeting…"</td></tr><tr><td><b>Expectations</b></td><td>Format, length, tone?</td><td>"…three bullets, numbers first, plain language."</td></tr></table></div></li><li><div class="unit-head"><span class="u">Unit 4</span><h4>Review before you rely</h4><span class="time">2 min</span></div><div class="unit-body"><div class="checks"><div><span>1</span>Check the numbers against the source.</div><div><span>2</span>Open the citations, especially on anything you will forward.</div><div><span>3</span>Ask "What did you leave out or could not verify?"</div><div><span>4</span>You own the output. Copilot drafts, you decide.</div></div><p class="usecase">Copilot uses the same permissions and protections as the rest of Microsoft 365. Your prompts and responses are covered by enterprise data protection and are not used to train the foundation models. Follow Fortune Brands policy on what you share.</p></div></li></ol></article></section><section id="a1"><h2 class="sec">Area 1 · Explore the market<span class="dur">0:15 – 0:30</span></h2><article class="module"><header><div class="kicker">Area 1 of 4 · 15 min · 3 units</div><h3>Category intelligence you can defend in front of a customer or partner</h3><div class="facts"><b>Runs on:</b> Researcher · <b>Covers:</b> market and competitor research with sources</div><p class="desc"><b>Use case.</b> You have a meeting coming up with a customer, channel partner or supplier. They will ask what is changing in the market and how we compare. The information is public but scattered, and you have twenty minutes.</p><div class="tags"><span class="tag tool">Researcher</span><span class="tag prod">Demo: Moen kitchen and smart water</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Unit 1</span><h4>Watch: a category review with sources you can click</h4><span class="time">5 min</span></div><div class="unit-body"><div class="lane laneA"><b>Lane A · Instructor demo</b>The instructor prepares for a meeting with Harbor Plumbing Supply, a fictional wholesaler, about Moen kitchen faucets and smart water leak detection.</div><p>Researcher breaks a complex question into steps, reads many sources, and returns a structured report with citations you can open, plus a list of what it could not verify. <b>Why Researcher and not Chat:</b> Chat gives you a fast answer. Researcher plans a multi-step investigation across the web and your work content, and gives you something you can defend when someone pushes back.</p><div class="plabel">Instructor prompt (Lane A)</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">I am meeting Harbor Plumbing Supply, a regional plumbing wholesaler, next week about Moen kitchen faucets and smart water leak detection.
+Give me three things changing in the U.S. kitchen faucet and smart water leak detection categories that would change how we price or position Moen over the next twelve months.
+Name the competitors that matter most and how each one is positioned.
+Cite every source with its date. Tell me plainly what you could not verify.</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 2</span><h4>Your turn: your market, your next meeting</h4><span class="time">6 min</span></div><div class="unit-body"><div class="lane laneB"><b>Lane B · Your turn, on your own work</b>Pick a real upcoming meeting and your own brand or category: Moen, House of Rohl, Therma-Tru, Fiberon, Larson, Master Lock, SentrySafe, Yale, or the area you support.</div><div class="plabel">Open the Researcher agent · paste this prompt</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">I am meeting [customer, partner or supplier] about [product, brand or category] on [date].
+Give me three things changing in the [category] market that would affect how we price, position or sell [our brand] over the next twelve months.
+Name the competitors that matter most and how each one is positioned. Use my recent emails and files about [customer, partner or supplier] for context.
+Cite every source with its date. Tell me plainly what you could not verify.</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 3</span><h4>Challenge: make it refuse to guess</h4><span class="time">4 min</span></div><div class="unit-body"><div class="plabel">Challenge · stay in the same conversation and paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Now use only sources published in the last eighteen months. If something is not in those sources, say &quot;not in the source&quot; rather than estimating it.
+Then tell me which of your three findings is the weakest, and why.
+Finally, give me the five questions [customer, partner or supplier] is most likely to ask me, with a one-line answer for each.</pre></div><div class="takeaway"><b>Takeaway.</b> The value is not the summary. It is the citations, the dates, and the list of what could not be verified.</div></div></li></ol></article></section><section id="a2"><h2 class="sec">Area 2 · Turn data into a decision<span class="dur">0:30 – 0:45</span></h2><article class="module"><header><div class="kicker">Area 2 of 4 · 15 min · 3 units</div><h3>What your numbers are actually telling you</h3><div class="facts"><b>Runs on:</b> Analyst · Copilot in Excel · <b>Covers:</b> data analysis, finding what a summary hides</div><p class="desc"><b>Use case.</b> A headline number looks good. Before you repeat it in a review, you want to know what is driving it and which parts are quietly going backwards.</p><div class="tags"><span class="tag tool">Analyst</span><span class="tag tool">Copilot in Excel</span><span class="tag prod">Demo: Moen Q3 FY26 vs Q3 FY25</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Unit 1</span><h4>Watch: from 1,920 rows to one sentence</h4><span class="time">5 min</span></div><div class="unit-body"><div class="lane laneA"><b>Lane A · Instructor demo</b>The instructor uses <b>FBIN Moen Kitchen &amp; Smart Water Performance SAMPLE.xlsx</b>. Water revenue is up 7.6%, but how much of that is price and how much is volume?</div><p>Analyst reads the whole workbook, writes and runs the calculation, and shows its working so you can check it. Copilot in Excel then turns the answer into a formula column, a PivotTable and a chart inside the file.</p><div class="plabel">Instructor prompt (Lane A) · Analyst</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Using the attached Moen Kitchen &amp; Smart Water Performance workbook, compare Q3 FY26 (July to September 2026) with Q3 FY25.
+1. Split the change in net revenue into price and volume, by product line.
+2. Name every product line, channel and region where units went down, and quantify each.
+3. Tell me what happened to gross margin %.
+Show the calculation so I can check it, and list any data quality issues you find.</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 2</span><h4>Your turn: a spreadsheet you own</h4><span class="time">6 min</span></div><div class="unit-body"><div class="lane laneB"><b>Lane B · Your turn, on your own work</b>Use any sales, cost, operations, quality or project spreadsheet you work with. Follow Fortune Brands policy for sensitive data. A sanitized copy is fine.</div><div class="plabel">Analyst · attach your file · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Using the attached [report or export], compare [this period] with [comparison period].
+Tell me the three most important changes, quantify each one, and explain what is driving them.
+Name anything that went backwards.
+Show the calculation so I can check it, and list any data quality issues.</pre></div><div class="plabel">Or in Excel · open your file · Copilot pane · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Add a column that calculates [metric, for example: margin % or variance to target] for each row. Then create a PivotTable of [measure] by [category] and [period], and a chart that compares [period A] with [period B].</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 3</span><h4>Challenge: argue against the headline</h4><span class="time">4 min</span></div><div class="unit-body"><div class="plabel">Challenge · same conversation</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">If I told my leadership team &quot;[your headline, for example: sales grew 7% this quarter]&quot;, what is the strongest case that it is weaker than it looks?
+Give me the one number I should lead with instead, and the two areas I should be most worried about.</pre></div><div class="takeaway"><b>Takeaway.</b> In the demo data, about two-thirds of the growth is price, not volume, and bath faucet units fell. A summary prompt would not have shown that. A decision prompt did.</div></div></li></ol></article></section><section id="a3"><h2 class="sec">Area 3 · Compress the document pile<span class="dur">0:45 – 1:00</span></h2><article class="module"><header><div class="kicker">Area 3 of 4 · 15 min · 3 units</div><h3>Several documents, one table you can act on</h3><div class="facts"><b>Runs on:</b> Copilot Chat with files · Copilot in Word · <b>Covers:</b> summarizing, comparing documents, catching contradictions</div><p class="desc"><b>Use case.</b> A new requirement, such as a regulation, policy, contract or specification, has to be applied to a list of products, customers, suppliers or sites. You need to know what is affected and whether the documents agree with each other.</p><div class="tags"><span class="tag tool">Copilot Chat</span><span class="tag tool">Copilot in Word</span><span class="tag prod">Demo: WEB-26 · 8 kitchen SKUs</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Unit 1</span><h4>Watch: three documents read together</h4><span class="time">5 min</span></div><div class="unit-body"><div class="lane laneA"><b>Lane A · Instructor demo</b>The instructor uses the fictional WEB-26 bulletin, the spec sheets and the product register: <b>FBIN Water Efficiency Bulletin WEB-26 Rev 4 SAMPLE.docx</b>, <b>FBIN Moen Kitchen Faucet Spec Sheets SAMPLE.docx</b> and <b>FBIN Moen Kitchen Product Register SAMPLE.xlsx</b>.</div><p>Copilot builds one product-by-product table. The interesting part is not the "affected" column. It is the products that <b>cannot be determined</b> and the places where <b>two documents disagree</b>.</p><div class="plabel">Instructor prompt (Lane A) · Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Read the attached WEB-26 bulletin, the kitchen faucet spec sheets and the product register.
+For each of the eight kitchen faucet SKUs, tell me whether it is affected by the new 1.5 gpm limit, not affected, or cannot be determined, and explain why. Cite the bulletin section you relied on.
+Put it in a table with the Region W revenue for each SKU, and total the revenue that is affected.
+Flag anywhere two documents disagree.</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 2</span><h4>Your turn: a document you need to apply</h4><span class="time">6 min</span></div><div class="unit-body"><div class="lane laneB"><b>Lane B · Your turn, on your own work</b>Use a policy, contract, standard, specification or procedure you work with, plus the list it applies to if you have one.</div><div class="plabel">Copilot Chat · type / to reference your files, or attach them · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Read [/policy, contract or specification] and [/list, register or tracker].
+For each [product, customer, supplier or site] in the list, tell me whether the requirement applies, does not apply, or cannot be determined, and explain why. Cite the section you relied on.
+Put it in a table and flag anywhere the two documents disagree.</pre></div><div class="plabel">Or in Word · open your document · Copilot · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Summarize this document in one page for [audience]: what changes, by when, what we must do, and who typically owns each step. Use plain language and a short table of key dates.</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 3</span><h4>Challenge: close the gaps</h4><span class="time">4 min</span></div><div class="unit-body"><div class="plabel">Challenge · same conversation</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">For every item you marked &quot;cannot be determined&quot;, and every place where the documents disagree, tell me exactly what information would resolve it and which team would typically own it.
+Then quote the wording that supports each conclusion.</pre></div><div class="takeaway"><b>Takeaway.</b> Copilot does the reading. You check the exceptions. In the demo, one product's register entry contradicts its own spec sheet, which is easy to miss deep in a long document.</div></div></li></ol></article></section><section id="a4"><h2 class="sec">Area 4 · Prepare the executive briefing<span class="dur">1:00 – 1:15</span></h2><article class="module"><header><div class="kicker">Area 4 of 4 · 15 min · 3 units</div><h3>Walk into your next review already prepared</h3><div class="facts"><b>Runs on:</b> Outlook · Teams · Word · PowerPoint · <b>Covers:</b> email and meeting catch-up, action items, drafting a brief and a deck</div><p class="desc"><b>Use case.</b> A review is coming up. The facts are spread across a long memo, several email threads and a meeting, and some of them contradict each other.</p><div class="tags"><span class="tag tool">Outlook</span><span class="tag tool">Teams</span><span class="tag tool">Word</span><span class="tag tool">PowerPoint</span><span class="tag prod">Demo: Water Q3 review</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Unit 1</span><h4>Watch: four apps, one briefing</h4><span class="time">5 min</span></div><div class="unit-body"><div class="lane laneA"><b>Lane A · Instructor demo</b>The instructor uses <b>FBIN Water Leadership Email Threads SAMPLE.docx</b>, <b>FBIN Water Leadership Meeting Transcript SAMPLE.docx</b> and <b>FBIN Water Q3 Business Review Memo SAMPLE.docx</b> to prepare a fictional VP, Dana Whitfield, for her Q3 review.</div><p>Pull action items and contradictions from the threads, decisions and owners from the meeting, write a one-page brief in Word, and turn it into a draft deck in PowerPoint.</p><div class="plabel">Instructor prompt (Lane A) · email threads</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">These are four email threads from the Water leadership team. List every action item with its owner and due date. Then flag every place where two messages contradict each other, such as dates, numbers or who owns what.</pre></div><div class="plabel">Instructor prompt (Lane A) · Word</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Using /FBIN Water Q3 Business Review Memo SAMPLE and /FBIN Water Leadership Meeting Transcript SAMPLE, write a one-page brief for Dana Whitfield&#x27;s Q3 review: our position in two sentences, three evidence bullets each with a figure, the three decisions we need from leadership, and the top risk with its owner.</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 2</span><h4>Your turn: pick the app you use most</h4><span class="time">6 min</span></div><div class="unit-body"><div class="lane laneB"><b>Lane B · Your turn, on your own work</b>Use a real thread in your inbox, a recent meeting you attended (with a transcript or recap), and a document of your own.</div><div class="plabel">Outlook · open a long thread · Copilot · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Summarize this thread: the decisions made, the action items with owner and due date, and anything that is still unresolved or where people disagree.</pre></div><div class="plabel">Teams · in the meeting recap, or in Copilot Chat (Work) · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Recap [meeting name] from [date]: the decisions made, the action items with owner and due date, any action item where the owner or date is unclear, and the open questions nobody answered.</pre></div><div class="plabel">Word · new document · Draft with Copilot · type / to reference your files</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Using /[document] and /[email or meeting notes], write a one-page brief for [audience] before [meeting]: our position in two sentences, three evidence bullets each with a figure, the decisions we need, and the top risk with its owner.</pre></div><div class="plabel">PowerPoint · new presentation · Copilot · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Create a five-slide presentation from /[document] for [audience]. Each slide title should state the point, not the topic. The last slide lists the decisions we need, with owners.</pre></div></div></li><li><div class="unit-head"><span class="u">Unit 3</span><h4>Challenge: fix the executive summary</h4><span class="time">4 min</span></div><div class="unit-body"><div class="plabel">Challenge · Word or Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Rewrite the executive summary of /[document] in under 120 words. Lead with the single most important number. Turn any vague requests into specific decisions with an owner and a date. Remove any adjective you cannot support with a number.</pre></div><div class="takeaway"><b>Takeaway.</b> In the demo, the threads contradict each other on a launch date, a promotion discount and who owns a filing. Ask Copilot to look for contradictions. It will not point them out unless you ask.</div></div></li></ol></article></section><section id="library"><h2 class="sec">Prompt library</h2><p class="intro">Every pattern from today plus everyday Fortune Brands prompts, grouped by job. Each one follows the same structure: <b>goal + context + source + expectations</b>. Pick one, click <b>Copy</b>, paste it into Copilot and replace everything in <mark class="br">[brackets]</mark>. <b>Save the ones that work</b> so you can run them again next week.</p><div class="libtools"><label class="sr" for="libsearch">Search prompts</label><input id="libsearch" type="search" placeholder="Search prompts, for example: email, meeting, supplier, summarize" autocomplete="off"><div class="chips" role="group" aria-label="Filter prompts"><button class="chip on" data-f="all" type="button">All</button><button class="chip" data-f="g:Catch up and prioritize" type="button">Catch up and prioritize</button><button class="chip" data-f="g:Meetings" type="button">Meetings</button><button class="chip" data-f="g:Writing and communication" type="button">Writing and communication</button><button class="chip" data-f="g:Customer and channel" type="button">Customer and channel</button><button class="chip" data-f="g:Analysis" type="button">Analysis</button><button class="chip" data-f="g:Documents" type="button">Documents</button><button class="chip" data-f="g:Stress-test" type="button">Stress-test</button></div><p class="libcount" aria-live="polite"></p></div><h3 class="libgroup">Catch up and prioritize</h3><div class="libgrid"><article class="libcard" data-group="Catch up and prioritize" data-src="fb" data-text="catch up and prioritize monday catch-up copilot chat (work) review my emails, teams chats and meetings from last week. list: (1) decisions i owe, (2) commitments others made to me that are still open, (3) emerging risks. give the owner and source for each. keep it to one page."><div class="libhead"><h4>Monday catch-up</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Catch up and prioritize</b> · Run in: Copilot Chat (Work)</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Review my emails, Teams chats and meetings from last week. List: (1) decisions I owe, (2) commitments others made to me that are still open, (3) emerging risks. Give the owner and source for each. Keep it to one page.</pre></div></article><article class="libcard" data-group="Catch up and prioritize" data-src="fb" data-text="catch up and prioritize back from time off copilot chat (work) i was out from [start date] to [end date]. summarize what i missed in email, chats and meetings, grouped by: needs my action, needs my awareness, and safe to ignore. most urgent first."><div class="libhead"><h4>Back from time off</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Catch up and prioritize</b> · Run in: Copilot Chat (Work)</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">I was out from [start date] to [end date]. Summarize what I missed in email, chats and meetings, grouped by: needs my action, needs my awareness, and safe to ignore. Most urgent first.</pre></div></article></div><h3 class="libgroup">Meetings</h3><div class="libgrid"><article class="libcard" data-group="Meetings" data-src="fb" data-text="meetings meeting prep copilot chat (work) prepare me for my meeting with [name or customer] on [date]. use our recent emails, chats, meeting notes and shared files. give me: the context in three bullets, open items on both sides, three likely questions with suggested answers, and what i should ask for."><div class="libhead"><h4>Meeting prep</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Meetings</b> · Run in: Copilot Chat (Work)</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Prepare me for my meeting with [name or customer] on [date]. Use our recent emails, chats, meeting notes and shared files. Give me: the context in three bullets, open items on both sides, three likely questions with suggested answers, and what I should ask for.</pre></div></article><article class="libcard" data-group="Meetings" data-src="fb" data-text="meetings meeting recap with owners teams (meeting recap) or copilot chat recap [meeting name]: decisions made, action items with owner and due date, open questions, and anything someone disagreed with. flag action items with no clear owner."><div class="libhead"><h4>Meeting recap with owners</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Meetings</b> · Run in: Teams (meeting recap) or Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Recap [meeting name]: decisions made, action items with owner and due date, open questions, and anything someone disagreed with. Flag action items with no clear owner.</pre></div></article><article class="libcard" data-group="Meetings" data-src="fb" data-text="meetings follow-up email from a meeting copilot in outlook or copilot chat (work) draft a follow-up email to the attendees of [meeting name] summarizing the decisions and action items with owners and dates. keep it under 150 words and friendly."><div class="libhead"><h4>Follow-up email from a meeting</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Meetings</b> · Run in: Copilot in Outlook or Copilot Chat (Work)</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Draft a follow-up email to the attendees of [meeting name] summarizing the decisions and action items with owners and dates. Keep it under 150 words and friendly.</pre></div></article></div><h3 class="libgroup">Writing and communication</h3><div class="libgrid"><article class="libcard" data-group="Writing and communication" data-src="fb" data-text="writing and communication message to my team copilot chat, or copilot in outlook draft a 180-word message to my team about [priority or change]. plain language, no jargon. end with a &quot;what i need from you&quot; list: three actions with owners and dates."><div class="libhead"><h4>Message to my team</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Writing and communication</b> · Run in: Copilot Chat, or Copilot in Outlook</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Draft a 180-word message to my team about [priority or change]. Plain language, no jargon. End with a &quot;What I need from you&quot; list: three actions with owners and dates.</pre></div></article><article class="libcard" data-group="Writing and communication" data-src="fb" data-text="writing and communication make it clearer copilot in word or outlook rewrite this to be clearer and more concise for [audience]. keep every fact, cut the jargon, use active voice, and put the most important point first. [paste text or select the text]"><div class="libhead"><h4>Make it clearer</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Writing and communication</b> · Run in: Copilot in Word or Outlook</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Rewrite this to be clearer and more concise for [audience]. Keep every fact, cut the jargon, use active voice, and put the most important point first. [paste text or select the text]</pre></div></article></div><h3 class="libgroup">Customer and channel</h3><div class="libgrid"><article class="libcard" data-group="Customer and channel" data-src="fb" data-text="customer and channel customer or partner reply copilot in outlook draft a reply to [name] at [customer or partner] that [confirms, declines or proposes something]. acknowledge their concern, give the facts, propose next steps with a date, and keep a warm, professional tone."><div class="libhead"><h4>Customer or partner reply</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Customer and channel</b> · Run in: Copilot in Outlook</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Draft a reply to [name] at [customer or partner] that [confirms, declines or proposes something]. Acknowledge their concern, give the facts, propose next steps with a date, and keep a warm, professional tone.</pre></div></article><article class="libcard" data-group="Customer and channel" data-src="fb" data-text="customer and channel account brief researcher build a one-page brief on [customer or channel partner]: what they do, recent news, how they buy from us based on my emails and files, open issues, and three opportunities. cite sources and mark anything you could not verify."><div class="libhead"><h4>Account brief</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Customer and channel</b> · Run in: Researcher</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Build a one-page brief on [customer or channel partner]: what they do, recent news, how they buy from us based on my emails and files, open issues, and three opportunities. Cite sources and mark anything you could not verify.</pre></div></article><article class="libcard" data-group="Customer and channel" data-src="fb" data-text="customer and channel competitor scan researcher compare [our brand] with [competitor 1] and [competitor 2] on product range, price positioning, channel strategy and recent launches. use sources from the last 12 months, cite each one, and finish with where we are most exposed."><div class="libhead"><h4>Competitor scan</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Customer and channel</b> · Run in: Researcher</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Compare [our brand] with [competitor 1] and [competitor 2] on product range, price positioning, channel strategy and recent launches. Use sources from the last 12 months, cite each one, and finish with where we are most exposed.</pre></div></article></div><h3 class="libgroup">Analysis</h3><div class="libgrid"><article class="libcard" data-group="Analysis" data-src="fb" data-text="analysis find the story in the data analyst or copilot in excel using this data, tell me the three most important things that changed versus [comparison period], quantify each one, and explain what is driving it. show your calculation and list any data quality issues."><div class="libhead"><h4>Find the story in the data</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Analysis</b> · Run in: Analyst or Copilot in Excel</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Using this data, tell me the three most important things that changed versus [comparison period], quantify each one, and explain what is driving it. Show your calculation and list any data quality issues.</pre></div></article><article class="libcard" data-group="Analysis" data-src="fb" data-text="analysis supplier risk analyst or copilot chat with the file attached from this supplier scorecard, rank the suppliers by risk to our next 90 days of supply. consider on-time delivery, defect rate, lead time against target, cost variance and single-source status. give me a table and a one-line recommended action for each top-five supplier."><div class="libhead"><h4>Supplier risk</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Analysis</b> · Run in: Analyst or Copilot Chat with the file attached</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">From this supplier scorecard, rank the suppliers by risk to our next 90 days of supply. Consider on-time delivery, defect rate, lead time against target, cost variance and single-source status. Give me a table and a one-line recommended action for each top-five supplier.</pre></div></article></div><h3 class="libgroup">Documents</h3><div class="libgrid"><article class="libcard" data-group="Documents" data-src="fb" data-text="documents policy to checklist copilot chat with the file attached, or word turn this [policy, contract or specification] into a checklist of what we must do, by when, and who typically owns each item. quote the section that supports each line."><div class="libhead"><h4>Policy to checklist</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Documents</b> · Run in: Copilot Chat with the file attached, or Word</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Turn this [policy, contract or specification] into a checklist of what we must do, by when, and who typically owns each item. Quote the section that supports each line.</pre></div></article><article class="libcard" data-group="Documents" data-src="fb" data-text="documents draft deck from a document powerpoint create a [number]-slide presentation from /[document name] for [audience]. each title states the point. add speaker notes. the last slide lists decisions or next steps with owners."><div class="libhead"><h4>Draft deck from a document</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Documents</b> · Run in: PowerPoint</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Create a [number]-slide presentation from /[document name] for [audience]. Each title states the point. Add speaker notes. The last slide lists decisions or next steps with owners.</pre></div></article></div><h3 class="libgroup">Stress-test</h3><div class="libgrid"><article class="libcard" data-group="Stress-test" data-src="fb" data-text="stress-test stress-test my recommendation copilot chat (think deeper) here is my recommendation: [paste]. give me the strongest argument against it, the assumptions it depends on, the one fact that would change my mind, and how a skeptical cfo would challenge it."><div class="libhead"><h4>Stress-test my recommendation</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Stress-test</b> · Run in: Copilot Chat (Think deeper)</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Here is my recommendation: [paste]. Give me the strongest argument against it, the assumptions it depends on, the one fact that would change my mind, and how a skeptical CFO would challenge it.</pre></div></article><article class="libcard" data-group="Stress-test" data-src="fb" data-text="stress-test what did you leave out? any copilot what did you leave out of that answer, what did you assume, and what could you not verify? be specific."><div class="libhead"><h4>What did you leave out?</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Stress-test</b> · Run in: Any Copilot</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">What did you leave out of that answer, what did you assume, and what could you not verify? Be specific.</pre></div></article></div><p class="libempty" hidden>No prompts match. Clear the search or pick another filter.</p></section><section id="builder"><h2 class="sec">Build a prompt worth reusing</h2><p class="intro">The four moves from today. A prompt you write once and run every month is worth more than a clever one you use once.</p>
+<table><tr><th style="width:20%">Move</th><th style="width:30%">What it does</th><th>Worked example on Moen</th></tr>
+<tr><td><b>The decision</b></td><td>Name what is actually at stake, not just the topic.</td><td>"I am deciding whether to hold the Q4 Home Center promotion at 15% or go to 20%."</td></tr>
+<tr><td><b>The evidence</b></td><td>Tell Copilot what it may use and what to stay away from.</td><td>"Use only the Q3 performance workbook and the promotion email thread. If it is not in those, say 'not in the source'."</td></tr>
+<tr><td><b>The adversary</b></td><td>Ask for the case against you.</td><td>"Give me the strongest argument against going to 20%, and the one fact that would change my mind."</td></tr>
+<tr><td><b>The deliverable</b></td><td>Say exactly what you want back.</td><td>"One page: position in two sentences, three evidence bullets with figures, the counter-case, one recommendation."</td></tr></table>
+<div class="plabel">Before and after, on the same Moen data</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt weak">Summarize the Q3 results for me.</pre></div><p class="intro" style="margin-block:10px">Accurate, safe and not very useful. It tells you what is in the file, not what to do about it.</p><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">I have to answer one question in Friday&#x27;s Q3 review: is the Water growth real?
+Use only the Moen Kitchen &amp; Smart Water Performance workbook and the Q3 business review memo.
+Tell me what share of the growth came from price rather than volume, name every product line where units fell, and quantify each.
+Then give me the strongest argument that I am reading too much into this, and the one fact that would change my mind.
+Two-sentence position, three sourced evidence bullets, the counter-case, one recommendation.</pre></div></section><section id="pack"><h2 class="sec">The instructor's sample files (Lane A)</h2><p class="intro">These are the files the instructor uses for the Lane A demos. You don't need them during the session. They are yours to keep, so you can rerun the demos later without touching anything confidential. It is one consistent made-up scenario built around Moen kitchen faucets and Smart Water in Q3 FY26, so the numbers match across every file.</p>
+<table><tr><th>File</th><th style="width:12%">Used in</th><th>What is in it</th></tr>
+<tr><td><b>FBIN Moen Kitchen &amp; Smart Water Performance SAMPLE.xlsx</b></td><td>Area 2</td><td>24 months (Oct 2024 to Sep 2026) of sales by region, channel and product line: units, price, revenue, cost and margin. 1,920 rows, with a Q3 summary sheet.</td></tr>
+<tr><td><b>FBIN Water Efficiency Bulletin WEB-26 Rev 4 SAMPLE.docx</b></td><td>Area 3</td><td>A made-up efficiency regulation lowering kitchen faucet flow from 1.8 to 1.5 gpm, with exemptions, sell-through dates and a filing deadline.</td></tr>
+<tr><td><b>FBIN Moen Kitchen Faucet Spec Sheets SAMPLE.docx</b></td><td>Area 3</td><td>Eight kitchen faucet spec sheets. Some are affected, some are clear, and one cannot be determined from the document.</td></tr>
+<tr><td><b>FBIN Moen Kitchen Product Register SAMPLE.xlsx</b></td><td>Area 3</td><td>The same eight products with units, revenue, regional exposure, re-engineering cost and lead time. One entry contradicts its own spec sheet.</td></tr>
+<tr><td><b>FBIN Water Q3 Business Review Memo SAMPLE.docx</b></td><td>Area 4</td><td>A long Q3 memo with an inflated executive summary, a risk register and three vague asks.</td></tr>
+<tr><td><b>FBIN Water Leadership Email Threads SAMPLE.docx</b></td><td>Area 4</td><td>Four threads and 16 messages with action items buried in paragraphs and contradictions on dates, numbers and ownership.</td></tr>
+<tr><td><b>FBIN Water Leadership Meeting Transcript SAMPLE.docx</b></td><td>Area 4</td><td>A 45-minute leadership meeting with seven speakers, four decisions and six action items. Two action items are unclear about the owner or date.</td></tr></table>
+<p class="intro" style="margin-block-start:14px"><b>All of it is made up.</b> Every figure, product code, regulation, company and person in these files is fictional content created for training. Fortune Brands brand names are used so the scenarios feel familiar, but none of it is Fortune Brands data, and none of it should be used to make a business decision.</p></section><section id="after"><h2 class="sec">After today</h2><p class="intro">Skills from a session like this fade within a week unless you use them. Pick one prompt and run it on your own work before Friday.</p><div class="cards3"><div class="card"><h4>Keep this page</h4><p>Bookmark it. Every prompt from today stays here, ready to copy. Ask the training team if you want the sample files.</p></div><div class="card"><h4>Use one prompt this week</h4><p>Start with the one that saves you the most time: the Monday catch-up, meeting prep, or the meeting recap with owners.</p></div><div class="card"><h4>Keep learning</h4><p>Microsoft Learn: search "Microsoft 365 Copilot" for short, free modules. Look for prompt ideas in the Copilot Prompt Gallery, available from the Copilot app.</p></div></div></section><section id="followup"><h2 class="sec">Appendix · Coming next: Copilot Cowork<span class="dur">For later · not covered live</span></h2><article class="module"><header><div class="kicker">Follow-up · optional</div><h3>From four prompts to one task</h3><div class="facts"><b>Runs on:</b> Copilot Cowork, when it is enabled for you</div><p class="desc">Not part of the live session, and not enabled for Fortune Brands at the time of training. Once you are comfortable with the four areas, this is the next step: one instruction that runs a multi-step task across your files, mail and the web and returns finished documents. Availability depends on licensing and tenant configuration.</p><div class="tags"><span class="tag cw">Copilot Cowork</span><span class="tag prod">Water Q3 review</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Example</span><h4>One instruction, four deliverables</h4></div><div class="unit-body"><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt cw">Prepare my Q3 Water review pack. Work through this end to end and give me finished files, not a chat answer.
+1. Market: research the kitchen faucet and smart water leak detection categories with Moen as the focus brand. Cite sources with dates.
+2. Numbers: from the Moen performance workbook, split Q3 growth into price and volume and list every line where units fell.
+3. Compliance: from the WEB-26 bulletin, spec sheets and register, build a product-by-product impact table and flag disagreements.
+4. Briefing: combine 1 to 3 with my Water mail and meetings from the last 30 days into a one-page brief and a five-slide deck.
+Flag anything you could not source rather than filling the gap.</pre></div><p class="usecase"><b>Rule of thumb:</b> if you would do it in one sitting, use Chat. If you would hand it to someone for an afternoon, that is a job for Cowork.</p></div></li></ol></article></section><footer class="page"><p><b>Questions during the session:</b> post them in the Teams chat. The Microsoft account team is monitoring Q&amp;A throughout, and anything we cannot answer live will come back to you in writing.</p><p>Fortune Brands · Microsoft 365 Copilot Training · Tuesday 10 November 2026 · Prepared by the Microsoft account team.</p><p>All demonstration data referenced here is fictional sample content created for training. Agent availability, model choices and feature names depend on licensing, tenant configuration and the current Copilot release.</p></footer></main></div>
+<script>
+(function () {
+  "use strict";
+  var LABEL = "Copy", OK = "Copied", ERR = "Select it";
+
+  function reset(btn) {
+    btn.textContent = LABEL;
+    btn.removeAttribute("data-state");
+  }
+
+  function flash(btn, text, state) {
+    btn.textContent = text;
+    btn.setAttribute("data-state", state);
+    window.setTimeout(function () { reset(btn); }, 1800);
+  }
+
+  function selectPre(pre) {
+    try {
+      var range = document.createRange();
+      range.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function legacyCopy(pre) {
+    if (!selectPre(pre)) return false;
+    try { return document.execCommand("copy"); } catch (e) { return false; }
+  }
+
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest ? ev.target.closest(".copybtn") : null;
+    if (!btn) return;
+    var pre = btn.parentNode.querySelector("pre.prompt");
+    if (!pre) return;
+    var text = pre.textContent;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        flash(btn, OK, "done");
+      }, function () {
+        var ok = legacyCopy(pre);
+        flash(btn, ok ? OK : ERR, ok ? "done" : "fail");
+      });
+    } else {
+      var ok = legacyCopy(pre);
+      flash(btn, ok ? OK : ERR, ok ? "done" : "fail");
+    }
+  });
+}());
+
+(function(){
+  "use strict";
+  // highlight [brackets] inside prompts (copy text is unchanged)
+  document.querySelectorAll("pre.prompt").forEach(function(pre){
+    var t = pre.textContent;
+    if (t.indexOf("[") < 0) return;
+    pre.innerHTML = t.replace(/[&<>]/g, function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];})
+                     .replace(/\[[^\]\n]{1,80}\]/g, function(m){return '<mark class="br">'+m+'</mark>';});
+  });
+  // toast after copy
+  var toast = document.createElement("div"); toast.className="toast"; toast.setAttribute("role","status");
+  document.body.appendChild(toast);
+  document.addEventListener("click", function(ev){
+    var b = ev.target.closest ? ev.target.closest(".copybtn") : null; if(!b) return;
+    var pre = b.parentNode.querySelector("pre.prompt");
+    var hasBr = pre && /\[[^\]]+\]/.test(pre.textContent);
+    toast.textContent = hasBr ? "Copied. Paste it into Copilot and replace the [brackets]." : "Copied. Paste it into Copilot.";
+    toast.classList.add("show"); clearTimeout(toast._t); toast._t=setTimeout(function(){toast.classList.remove("show");},2200);
+  });
+  // library filter
+  var input = document.getElementById("libsearch"); if(!input) return;
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".libcard"));
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var count = document.querySelector(".libcount"), empty = document.querySelector(".libempty");
+  var groups = Array.prototype.slice.call(document.querySelectorAll("h3.libgroup"));
+  var filt = "all";
+  function apply(){
+    var q = input.value.trim().toLowerCase(), n = 0;
+    cards.forEach(function(c){
+      var ok = true;
+      if (filt.indexOf("src:")===0) ok = c.dataset.src === filt.slice(4);
+      else if (filt.indexOf("g:")===0) ok = c.dataset.group === filt.slice(2);
+      if (ok && q) ok = q.split(/\s+/).every(function(w){return c.dataset.text.indexOf(w)>=0;});
+      c.hidden = !ok; if(ok) n++;
+    });
+    groups.forEach(function(h){ var g=h.nextElementSibling; h.hidden = !g.querySelector(".libcard:not([hidden])"); });
+    count.textContent = n + (n===1?" prompt":" prompts") + " shown";
+    empty.hidden = n>0;
+  }
+  chips.forEach(function(ch){ ch.addEventListener("click", function(){
+    chips.forEach(function(x){x.classList.remove("on");}); ch.classList.add("on"); filt = ch.dataset.f; apply(); }); });
+  input.addEventListener("input", apply); apply();
+}());
+</script>
+</body></html>
