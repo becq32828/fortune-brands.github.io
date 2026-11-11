@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Fortune Brands · Copilot Chat Training · Follow along</title><style>
+:root{
+  --bg:#ffffff;
+  --page:#F4F7FA;
+  --surface:#ffffff;
+  --surface-alt:#EEF3F8;
+  --ink:#161616;
+  --ink-soft:#424242;
+  --ink-faint:#6b6b6b;
+  --line:#D9E2EC;
+  --line-strong:#c8c6c4;
+  --brand:#1C4D78;
+  --brand-soft:#E8EFF6;
+  --accent:#9A6F12;
+  --accent-soft:#FBF4E6;
+  --green:#1C4D78;
+  --green-soft:#E8EFF6;
+  --amber:#8A6418;
+  --amber-soft:#FBF4E6;
+  --code-bg:#f8f8f8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#1b1a19;--page:#141313;--surface:#252423;--surface-alt:#2f2e2d;
+    --ink:#f3f3f3;--ink-soft:#d4d4d4;--ink-faint:#a6a6a6;
+    --line:#3b3a39;--line-strong:#4f4d4b;
+    --brand:#8FB8DE;--brand-soft:#132638;
+    --accent:#E2B65A;--accent-soft:#2E2512;
+    --green:#8FB8DE;--green-soft:#132638;
+    --amber:#E2B65A;--amber-soft:#2E2512;
+    --code-bg:#1f1e1d;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-block-start:70px}
+body{
+  margin:0;background:var(--page);color:var(--ink);
+  font-family:"Segoe UI","Segoe UI Web (West European)",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.6;
+}
+a{color:var(--brand)}
+.wrap{max-width:1140px;margin-inline:auto;padding-inline:24px}
+
+/* ---- Title banner ---- */
+.banner{background:var(--surface);border-block-end:1px solid var(--line);padding-block:30px 24px}
+.crumb{font-size:.82rem;color:var(--ink-faint);margin-block-end:10px}
+.crumb span{margin-inline:6px}
+.banner h1{margin:0 0 8px;font-size:2.1rem;font-weight:600;line-height:1.2}
+.banner p.lede{margin:0;max-width:70ch;color:var(--ink-soft)}
+.meta{margin-block-start:14px;font-size:.88rem;color:var(--ink-faint)}
+
+/* ---- At a glance ---- */
+.glance{
+  background:var(--surface-alt);border:1px solid var(--line);border-radius:6px;
+  padding:16px 20px;margin-block-start:22px;
+  display:grid;grid-template-columns:1fr;gap:12px;
+}
+@media (min-width:720px){.glance{grid-template-columns:repeat(4,1fr)}}
+.glance div b{display:block;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin-block-end:3px}
+.glance div span{font-size:.9rem;color:var(--ink)}
+
+/* ---- Layout: rail + content ---- */
+.layout{display:grid;grid-template-columns:1fr;gap:34px;padding-block:34px 60px;align-items:start}
+@media (min-width:1000px){.layout{grid-template-columns:252px 1fr}}
+aside.rail{position:sticky;top:20px;font-size:.88rem}
+aside.rail h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin:0 0 10px}
+aside.rail ol{list-style:none;margin:0;padding:0;border-inline-start:2px solid var(--line)}
+aside.rail li a{
+  display:block;padding:6px 0 6px 14px;text-decoration:none;color:var(--ink-soft);
+  margin-inline-start:-2px;border-inline-start:2px solid transparent;
+}
+aside.rail li a:hover{color:var(--brand);border-inline-start-color:var(--brand)}
+aside.rail li a.new::after{
+  content:"New";margin-inline-start:7px;font-size:.66rem;font-weight:700;
+  background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:999px;vertical-align:middle;
+}
+
+/* ---- Content blocks ---- */
+section{margin-block-end:40px;scroll-margin-block-start:24px}
+h2.sec{font-size:1.55rem;font-weight:600;margin:0 0 4px;padding-block-end:8px;border-block-end:1px solid var(--line)}
+h2.sec .dur{font-size:.85rem;font-weight:400;color:var(--ink-faint);margin-inline-start:10px}
+p.intro{color:var(--ink-soft);margin-block:12px 18px;max-width:78ch}
+
+.note{
+  background:var(--amber-soft);border:1px solid var(--line);border-inline-start:4px solid var(--amber);
+  border-radius:4px;padding:16px 20px;
+}
+.note h3{margin:0 0 10px;font-size:1rem;color:var(--amber)}
+.note ul{margin:0;padding-inline-start:20px}
+.note li{margin-block-end:7px;color:var(--ink-soft)}
+.note li b{color:var(--ink)}
+
+/* ---- Module card, Learn style ---- */
+.module{background:var(--surface);border:1px solid var(--line);border-radius:6px;margin-block-end:22px;overflow:hidden}
+.module > header{padding:18px 22px 16px;border-block-end:1px solid var(--line)}
+.kicker{font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--brand)}
+.module h3{margin:5px 0 6px;font-size:1.22rem;font-weight:600}
+.module .facts{font-size:.85rem;color:var(--ink-faint)}
+.module .facts b{color:var(--ink-soft);font-weight:600}
+.module .desc{margin:10px 0 0;color:var(--ink-soft);font-size:.95rem;max-width:80ch}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-block-start:12px}
+.tag{font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:3px;border:1px solid var(--line-strong);background:var(--surface-alt);color:var(--ink-soft)}
+.tag.tool{background:var(--brand-soft);color:var(--brand);border-color:transparent}
+.tag.prod{background:var(--green-soft);color:var(--green);border-color:transparent}
+.tag.cw{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+
+/* ---- Unit outline ---- */
+ol.units{list-style:none;margin:0;padding:0}
+ol.units > li{border-block-end:1px solid var(--line);padding:16px 22px}
+ol.units > li:last-child{border-block-end:none}
+.unit-head{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+.unit-head .u{
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-faint);min-width:72px;
+}
+.unit-head h4{margin:0;font-size:1rem;font-weight:600}
+.unit-head .time{font-size:.8rem;color:var(--ink-faint)}
+.unit-body{margin-block-start:8px}
+.unit-body p{margin:0 0 10px;color:var(--ink-soft);font-size:.94rem;max-width:80ch}
+.usecase{font-size:.94rem;color:var(--ink-soft);margin:0 0 10px}
+.usecase b{color:var(--ink)}
+.lanes{display:grid;grid-template-columns:1fr;gap:10px;margin-block-end:12px}
+@media (min-width:680px){.lanes{grid-template-columns:1fr 1fr}}
+.lane{border:1px solid var(--line);border-radius:4px;padding:10px 13px;background:var(--bg);font-size:.88rem;color:var(--ink-soft)}
+.lane b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);margin-block-end:3px}
+.plabel{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-block:14px 6px}
+/* ---- Copy button on each prompt ---- */
+.promptwrap{position:relative}
+.promptwrap pre.prompt{padding-inline-end:92px}
+.copybtn{
+  position:absolute;inset-block-start:8px;inset-inline-end:8px;
+  font-family:inherit;font-size:.74rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;cursor:pointer;
+  padding:5px 12px;border-radius:4px;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);
+  transition:background .12s,color .12s,border-color .12s;
+}
+.copybtn:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+.copybtn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.copybtn[data-state="done"]{background:var(--green);color:#fff;border-color:var(--green)}
+.copybtn[data-state="fail"]{background:var(--amber-soft);color:var(--amber);border-color:var(--amber)}
+@media print{.copybtn{display:none}.promptwrap pre.prompt{padding-inline-end:16px}}
+pre.prompt{
+  margin:0;background:var(--code-bg);border:1px solid var(--line);border-inline-start:3px solid var(--brand);
+  border-radius:4px;padding:13px 16px;font-family:"Cascadia Mono",Consolas,"Courier New",monospace;
+  font-size:.855rem;line-height:1.55;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere;
+}
+pre.prompt.cw{border-inline-start-color:var(--accent)}
+pre.prompt.weak{border-inline-start-color:var(--line-strong);color:var(--ink-faint)}
+.takeaway{
+  background:var(--brand-soft);border-radius:4px;padding:11px 15px;font-size:.9rem;color:var(--ink-soft);
+}
+.takeaway b{color:var(--brand)}
+
+/* ---- Tables ---- */
+table{border-collapse:collapse;width:100%;font-size:.89rem;margin-block-start:12px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:start;vertical-align:top}
+th{background:var(--surface-alt);font-weight:600}
+caption{caption-side:top;text-align:start;font-size:.85rem;color:var(--ink-faint);padding-block-end:6px}
+
+.cards3{display:grid;grid-template-columns:1fr;gap:14px;margin-block-start:14px}
+@media (min-width:760px){.cards3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:15px 18px}
+.card h4{margin:0 0 6px;font-size:1rem}
+.card p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+
+ul.plain{margin:10px 0 0;padding-inline-start:20px}
+ul.plain li{margin-block-end:7px;color:var(--ink-soft)}
+ul.plain li b{color:var(--ink)}
+
+footer.page{border-block-start:1px solid var(--line);padding-block:24px 40px;color:var(--ink-faint);font-size:.86rem}
+footer.page p{margin:0 0 6px;max-width:85ch}
+
+@media print{
+  aside.rail{display:none}
+  .layout{grid-template-columns:1fr}
+  .module{break-inside:avoid}
+  body{background:#fff}
+}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.placeholder{background:#fff4ce;color:#5c4400;border:1px dashed #b98a00;border-radius:3px;padding:1px 6px;font-weight:700;white-space:normal}
+@media (prefers-color-scheme: dark){.placeholder{background:#3d3214;color:#ffd978;border-color:#c99a1f}}
+mark.br{background:#fff4ce;color:inherit;border-radius:2px;padding:0 2px}
+@media (prefers-color-scheme: dark){mark.br{background:#4a3c12}}
+.quick{background:var(--brand-soft);border:1px solid var(--line);border-inline-start:4px solid var(--brand);border-radius:6px;padding:18px 22px}
+.quick h2{margin:0 0 8px;font-size:1.15rem}
+ol.quicksteps{margin:0;padding-inline-start:22px}
+ol.quicksteps li{margin-block-end:8px;color:var(--ink-soft)}
+ol.quicksteps li b{color:var(--ink)}
+.quicknote{margin:10px 0 0;font-size:.9rem;color:var(--ink-soft)}
+.copybtn{background:var(--brand);color:#fff;border-color:var(--brand);font-size:.8rem;padding:6px 14px}
+.copybtn:hover{filter:brightness(1.1)}
+.files{display:block;margin-block-start:6px;font-size:.8rem;color:var(--ink-faint)}
+.caution{font-size:.86rem;color:var(--amber);margin:4px 0 8px}
+.tag.caution-tag{background:var(--amber-soft);color:var(--amber);border-color:transparent}
+.tag.src-itw{background:var(--green-soft);color:var(--green);border-color:transparent}
+table.agenda td.clock{white-space:nowrap;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+table.anatomy{margin-block-end:6px}
+.checks{display:grid;grid-template-columns:1fr;gap:8px;margin-block:6px 4px}
+@media (min-width:680px){.checks{grid-template-columns:1fr 1fr}}
+.checks div{border:1px solid var(--line);border-radius:4px;padding:9px 12px;background:var(--bg);font-size:.92rem}
+.checks span,.steps3 span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--brand);color:#fff;font-size:.75rem;font-weight:700;margin-inline-end:8px}
+.steps3{display:grid;grid-template-columns:1fr;gap:10px;margin-block:4px 18px}
+@media (min-width:760px){.steps3{grid-template-columns:repeat(3,1fr)}}
+.steps3 div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:.92rem;color:var(--ink-soft)}
+.libtools{position:sticky;top:0;z-index:2;background:var(--page);padding-block:10px 6px}
+#libsearch{width:100%;font:inherit;padding:10px 14px;border:1px solid var(--line-strong);border-radius:6px;background:var(--surface);color:var(--ink)}
+#libsearch:focus{outline:2px solid var(--brand);outline-offset:1px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-block-start:10px}
+.chip{font:inherit;font-size:.8rem;padding:4px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);cursor:pointer}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.libcount{font-size:.8rem;color:var(--ink-faint);margin:8px 0 0}
+h3.libgroup{font-size:1.05rem;margin:22px 0 10px}
+.libgrid{display:grid;grid-template-columns:1fr;gap:14px}
+.libcard{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+.libhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.libhead h4{margin:0;font-size:1rem}
+.libhead .tags{margin:0}
+.libmeta{font-size:.82rem;color:var(--ink-faint);margin:4px 0 10px}
+.libmeta b{color:var(--ink-soft)}
+.libempty{color:var(--ink-faint)}
+.toast{position:fixed;inset-block-end:20px;inset-inline-start:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:6px;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.toast.show{opacity:1}
+@media print{.libtools,.toast{display:none}}
+.dl{font-weight:700;overflow-wrap:anywhere}
+.banner{background:#0F2E4A;color:#fff;border-block-end:4px solid #C9972C}
+.banner h1{color:#fff}.banner p.lede{color:#DCE6F0}.banner .meta,.banner .crumb{color:#B9C9DA}
+.banner .crumb b{color:#C9972C;letter-spacing:.12em}
+.banner .glance{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
+.banner .glance div b{color:#C9972C}.banner .glance div span{color:#fff}
+.kicker{color:var(--accent)}
+h2.sec{border-block-end:2px solid #C9972C}
+.tag.src-fb{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.ph{background:#fff4ce;color:#5c4400;border:1px dashed #b98a00;border-radius:3px;padding:1px 6px;font-weight:700}
+.tip{border-inline-start:4px solid #C9972C;background:var(--accent-soft);border-radius:4px;padding:10px 14px;font-size:.9rem;color:var(--ink-soft);margin-block:10px}
+.tip b{color:var(--ink)}
+
+/* Fortune Brands navy + gold */
+h2.sec,.module h3,.card h4,.quick h2,h3.libgroup{color:var(--brand)}
+.module > header{background:linear-gradient(0deg,var(--surface),var(--brand-soft));border-block-start:4px solid #C9972C}
+aside.rail li a:hover{color:var(--brand);border-inline-start-color:#C9972C}
+aside.rail ol{border-inline-start-color:#C9972C55}
+th{background:var(--brand);color:#fff;border-color:var(--brand)}
+.card{border-block-start:3px solid #C9972C}
+.copybtn{background:var(--brand);border-color:var(--brand)}
+.copybtn:hover{background:#C9972C;border-color:#C9972C;color:#0F2E4A;filter:none}
+.copybtn[data-state="done"]{background:#C9972C;border-color:#C9972C;color:#0F2E4A}
+pre.prompt{border-inline-start-color:#C9972C}
+.chip.on{background:var(--brand);border-color:var(--brand)}
+.lane.laneA{background:var(--surface-alt);border-inline-start:4px solid var(--brand)}
+.lane.laneB{background:var(--accent-soft);border-inline-start:4px solid #C9972C}
+.lane.laneA b{color:var(--brand)}.lane.laneB b{color:var(--accent)}
+.lane{margin-block-end:10px}
+.unit-head .u{color:var(--accent)}
+.takeaway{border-inline-start:4px solid var(--brand)}
+.quick{border-inline-start-color:#C9972C}
+footer.page{border-block-start:3px solid #C9972C}
+.banner{background:linear-gradient(120deg,#0F2E4A 0%,#1C4D78 100%)}
+@media (prefers-color-scheme: dark){th{background:#163B5E;border-color:#163B5E}}
+</style></head>
+<body><div class="banner"><div class="wrap"><div class="crumb"><b>FORTUNE BRANDS</b> <span>›</span> Copilot Chat <span>›</span> Getting started with AI at work</div><h1>Getting started with Copilot Chat · follow along</h1><p class="lede">Four short modules and one hands-on exercise. Every prompt on this page works in <b>Copilot Chat</b>, which is included with your Microsoft 365 work account. No add-on license is needed.</p><p class="meta">Thursday 12 November 2026 · 9:30 – 11:00 AM ET (8:30 – 10:00 AM CT) · 90 minutes, including 15 minutes of Q&amp;A · Keep this page open beside Copilot Chat.</p><div class="glance"><div><b>Level</b><span>All levels, including first-time users</span></div><div><b>Audience</b><span>Fortune Brands employees using Copilot Chat</span></div><div><b>Runs on</b><span>Copilot Chat on the web, in the app, Teams, Edge and Outlook</span></div><div><b>Format</b><span>Learn → Lane A instructor demo → Lane B your turn</span></div></div></div></div>
+<div class="wrap layout"><aside class="rail"><h2>On this page</h2><ol><li><a href="#start">How to use this page</a></li><li><a href="#how">Today at a glance</a></li><li><a href="#m1">1 · Generative AI and responsible AI</a></li><li><a href="#m2">2 · Getting started</a></li><li><a href="#m3">3 · Writing effective prompts</a></li><li><a href="#m4">4 · Working smarter</a></li><li><a href="#hands">Hands-on · Notes to a plan</a></li><li><a href="#library">Prompt library</a></li><li><a href="#pack">Instructor sample files</a></li><li><a href="#after">After today</a></li></ol></aside><main><section id="start" class="quick"><h2>How to use this page</h2><ol class="quicksteps">
+<li><b>Open Copilot Chat</b> at <b>m365.cloud.microsoft/chat</b>, in the Microsoft 365 Copilot app, in Teams, or in Edge. Sign in with your Fortune Brands work account and look for the <b>green shield</b>, which means enterprise data protection is on.</li>
+<li><b>Two lanes.</b> <b>Lane A</b> is the instructor's demo on fictional sample files. Just watch. <b>Lane B</b> is your turn: try the same kind of prompt on your own work. Follow Fortune Brands policy on what you upload.</li><li><b>Click Copy</b> on any prompt, paste it into Copilot Chat, and replace anything in <mark class="br">[brackets]</mark>.</li>
+<li><b>Don't stop at the first answer.</b> Every exercise has a follow-up prompt. Refining the answer is the most important skill in this session.</li></ol>
+<p class="quicknote"><b>This session is Copilot Chat only.</b> Everything here works without the Microsoft 365 Copilot add-on license. Copilot Chat uses the web and the files you upload. It does not search your mailbox, chats or OneDrive automatically.</p></section><section id="how"><h2 class="sec">Today at a glance</h2><p class="intro">Ninety minutes, four modules, one hands-on exercise, and time for your questions.</p>
+<table class="agenda"><tr><th style="width:18%">Clock</th><th>Module</th><th style="width:36%">You will practice</th></tr>
+<tr><td class="clock">0:00 – 0:10</td><td><b>1 · Generative AI and responsible AI</b></td><td>How it works, and why to review before you rely on it</td></tr>
+<tr><td class="clock">0:10 – 0:25</td><td><b>2 · Getting started with Copilot Chat</b></td><td>Access, the interface, web grounding, data protection</td></tr>
+<tr><td class="clock">0:25 – 0:45</td><td><b>3 · Writing effective prompts</b></td><td>The four-part prompt, draft then refine, custom instructions</td></tr>
+<tr><td class="clock">0:45 – 1:00</td><td><b>4 · Working smarter</b></td><td>Upload a file, research with citations, Outlook, images, Pages</td></tr>
+<tr><td class="clock">1:00 – 1:15</td><td><b>Hands-on: from messy notes to a finished plan</b></td><td>Five prompts on your own event or project</td></tr>
+<tr><td class="clock">1:15 – 1:30</td><td><b>Questions and next steps</b></td><td></td></tr></table>
+<p class="intro" style="margin-block-start:18px"><b>One ground rule.</b> The instructor (Lane A) uses only made-up sample data, because this session is recorded and shared. On your own screen (Lane B), use your own work, following Fortune Brands policy on what you share.</p></section><section id="m1"><h2 class="sec">Module 1 · Generative AI and responsible AI<span class="dur">0:00 – 0:10</span></h2><article class="module"><header><div class="kicker">Module 1 of 4 · 10 min</div><h3>How it works, why it can be wrong, and your role</h3><div class="facts"><b>Covers:</b> what generative AI is, Microsoft's six responsible AI principles, reviewing before you rely on it</div><p class="desc">Copilot predicts a likely answer from patterns. That makes it fast and fluent, and occasionally confidently wrong. Your job is to review its answers, not to trust them blindly.</p><div class="tags"><span class="tag tool">Foundations</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Know</span><h4>Review before you rely</h4></div><div class="unit-body"><div class="checks"><div><span>1</span><b>Inaccurate:</b> check facts, numbers and citations.</div><div><span>2</span><b>Biased:</b> look for one-sided wording or missing views.</div><div><span>3</span><b>Outdated:</b> confirm dates and current details.</div><div><span>4</span><b>Off-target:</b> make sure it answered what you asked.</div></div></div></li><li><div class="unit-head"><span class="u">Try</span><h4>Ask Copilot to check itself</h4></div><div class="unit-body"><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Explain how a generative AI tool like you produces an answer, in five plain-language bullets for someone who has never used AI at work. Then list three ways your answers could be wrong and how I should check for each.</pre></div></div></li></ol></article></section><section id="m2"><h2 class="sec">Module 2 · Getting started with Copilot Chat<span class="dur">0:10 – 0:25</span></h2><article class="module"><header><div class="kicker">Module 2 of 4 · 15 min</div><h3>Access, the interface, web grounding and data protection</h3><div class="facts"><b>Runs on:</b> Copilot Chat (web, app, Teams, Edge) · <b>Covers:</b> what is included and what is not</div><p class="desc">Copilot Chat comes with your Microsoft 365 work account. It uses current web information with citations, works with files you upload, and protects your prompts and responses with enterprise data protection.</p><div class="tags"><span class="tag tool">Copilot Chat</span><span class="tag tool">Web grounded</span><span class="tag tool">Green shield</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Know</span><h4>What Copilot Chat includes, and what it doesn't</h4></div><div class="unit-body"><table><tr><th>Included with Copilot Chat</th><th>Requires the Microsoft 365 Copilot license (not covered today)</th></tr><tr><td>Web-grounded chat with citations · Upload files and ask questions · Image creation · Copilot Pages · Create a document from a chat · Copilot in Outlook basics · Agents your organization makes available</td><td>Copilot inside Word, Excel, PowerPoint and OneNote · Researcher and Analyst agents · Teams meeting recaps · Automatic use of your mail, chats and files</td></tr></table></div></li><li><div class="unit-head"><span class="u">Try</span><h4>Your first prompts</h4></div><div class="unit-body"><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">I work in [your role, for example: customer service, finance, plant operations, marketing] at a building and home products manufacturer. Give me ten specific ways Copilot Chat could save me time this week, ordered from easiest to try to most valuable.</pre></div><div class="plabel">Then check its sources: open at least one citation</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">What is the difference between Copilot Chat and Microsoft 365 Copilot? Answer in a short table and cite Microsoft sources.</pre></div><div class="tip"><b>Look for the shield.</b> When you are signed in with your work account, enterprise data protection applies. Your prompts and responses are not used to train the foundation models.</div></div></li></ol></article></section><section id="m3"><h2 class="sec">Module 3 · Writing effective prompts<span class="dur">0:25 – 0:45</span></h2><article class="module"><header><div class="kicker">Module 3 of 4 · 20 min</div><h3>Four elements, best practices, and making Copilot yours</h3><div class="facts"><b>Covers:</b> Goal · Context · Source · Expectations, draft then refine, common mistakes, custom instructions</div><p class="desc">Most of the difference between a weak and a strong answer comes from the prompt. Include four elements, then refine the answer through conversation instead of starting over.</p><div class="tags"><span class="tag tool">Prompting</span><span class="tag prod">Harbor Plumbing Supply (fictional)</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Know</span><h4>Anatomy of a great prompt</h4></div><div class="unit-body"><table class="anatomy"><tr><th style="width:18%">Element</th><th>Ask yourself</th><th>Example</th></tr><tr><td><b>Goal</b></td><td>What do I want?</td><td>"Draft an email…"</td></tr><tr><td><b>Context</b></td><td>Who is it for, and why?</td><td>"…to our contact at Harbor Plumbing Supply, a key wholesaler, whose Moen order is late…"</td></tr><tr><td><b>Source</b></td><td>What should it use?</td><td>"…using the details below…"</td></tr><tr><td><b>Expectations</b></td><td>Format, length, tone?</td><td>"…under 120 words, apologetic but confident."</td></tr></table></div></li><li><div class="unit-head"><span class="u">Demo 1</span><h4>Draft, then refine</h4></div><div class="unit-body"><div class="lane laneA"><b>Lane A · Instructor demo</b>The instructor drafts an email to a fictional wholesaler about a delayed Moen shipment.</div><div class="plabel">Step 1 · draft</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Draft an email to our contact at Harbor Plumbing Supply explaining that their Moen kitchen faucet shipment is delayed three days due to a carrier issue. Apologize, give the new delivery date of Friday, and offer a quick call.</pre></div><div class="plabel">Step 2 · refine in the same chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Make it shorter and warmer. Add a short bulleted list with the order number [order number], the original date and the new delivery date. Close with my name and title.</pre></div><div class="plabel">Step 3 · repurpose</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Now give me a version I could send as a Teams message instead: three sentences, friendly, no bullets.</pre></div><div class="lane laneB"><b>Lane B · Your turn, on your own work</b>Write a real email you need to send this week.</div><div class="plabel">Your turn · draft</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Draft an email to [name] at [company or team] about [situation]. Include [key facts, dates or numbers]. Keep it under [number] words, [tone, for example: friendly and confident], and end with [next step].</pre></div><div class="plabel">Your turn · refine in the same chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Make it shorter and clearer, put the most important point first, and give me one alternative subject line.</pre></div></div></li><li><div class="unit-head"><span class="u">Compare</span><h4>Before and after</h4></div><div class="unit-body"><div class="plabel">Too vague</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt weak">Write something about our suppliers.</pre></div><div class="plabel">Specific: goal, context, source and expectations</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">I&#x27;m a buyer at a home products manufacturer preparing for a quarterly supplier review. Draft a one-page agenda for a 45-minute meeting with a key brass castings supplier whose on-time delivery dropped to 81%. Include discussion points, the data to bring, and three questions to ask. Use a professional, collaborative tone.</pre></div></div></li><li><div class="unit-head"><span class="u">Make it yours</span><h4>Set custom instructions</h4></div><div class="unit-body"><p>Select <b>… (Settings and more) › Settings › Personalization</b> and tell Copilot about yourself once, so you don't repeat it in every prompt.</p><div class="plabel">Example custom instructions</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">I work in [department] at Fortune Brands, a home and security products company (brands include Moen, Therma-Tru, Fiberon, Master Lock and Yale). I usually write for [audience]. Prefer plain language, short paragraphs and bullet points. Use U.S. English. When you are unsure, say so.</pre></div></div></li></ol></article></section><section id="m4"><h2 class="sec">Module 4 · Working smarter with Copilot Chat<span class="dur">0:45 – 1:00</span></h2><article class="module"><header><div class="kicker">Module 4 of 4 · 15 min</div><h3>Everyday tasks, files, research, Outlook, images and Pages</h3><div class="facts"><b>Covers:</b> summarize, analyze an uploaded file, research with citations, rewrite, create an image, Pages and documents</div><p class="desc">Everyday tasks Copilot Chat handles well: brainstorming, summarizing, drafting, rewriting, researching and analyzing a file you upload.</p><div class="tags"><span class="tag tool">Copilot Chat</span><span class="tag tool">File upload</span><span class="tag tool">Outlook</span><span class="tag tool">Pages</span></div></header><ol class="units"><li><div class="unit-head"><span class="u">Demo 2</span><h4>Upload a file, get answers</h4></div><div class="unit-body"><div class="lane laneA"><b>Lane A · Instructor demo</b>The instructor uploads <b>FBIN Q3 Supplier Scorecard SAMPLE.xlsx</b>.</div><div class="plabel">Step 1 · upload the file with + and paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Summarize the top five risks in this supplier scorecard. Targets are on-time delivery of at least 95%, defects of at most 500 PPM, lead time at or under target, and cost variance of at most 3%.</pre></div><div class="plabel">Step 2 · same chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Put those risks in a table with columns for supplier, risk, impact on our business, and a suggested next step. Then tell me which supplier issue could delay a product launch, and whether any data is missing.</pre></div><div class="lane laneB"><b>Lane B · Your turn, on your own work</b>Upload a spreadsheet, report or document you work with.</div><div class="plabel">Your turn · upload your file with + and paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Summarize the top five [risks, issues or trends] in this file. Put them in a table with columns for the item, the impact, and a suggested next step. Tell me if any data looks missing or inconsistent.</pre></div></div></li><li><div class="unit-head"><span class="u">Demo 3</span><h4>Research with citations</h4></div><div class="unit-body"><div class="lane laneA"><b>Lane A · Instructor demo</b>The instructor researches building-products trends before a fictional builder meeting.</div><div class="plabel">Step 1</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">What are the top three trends shaping the U.S. home improvement and building products market this year, including smart water leak detection? Include sources with dates.</pre></div><div class="plabel">Step 2 · same chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Turn those trends into five smart questions I can ask Summit Build Group, a home builder customer, in tomorrow&#x27;s meeting.</pre></div><div class="lane laneB"><b>Lane B · Your turn, on your own work</b>Research your own industry, function or next meeting.</div><div class="plabel">Your turn · step 1</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">What are the top three trends shaping [your industry, function or topic] this year? Include sources with dates, and tell me what is still uncertain.</pre></div><div class="plabel">Your turn · step 2</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Turn those trends into five smart questions I can ask [person, team or customer] in my next meeting.</pre></div></div></li><li><div class="unit-head"><span class="u">Practice</span><h4>Rewrite for clarity</h4></div><div class="unit-body"><div class="lane laneA"><b>Lane A · Instructor demo</b>The instructor uploads <b>FBIN Product Announcement Draft SAMPLE.docx</b>.</div><div class="plabel">Instructor prompt (Lane A)</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Rewrite this announcement so it is clear, friendly and under 150 words. Put the launch date and what is new in the first two sentences, use active voice, remove the jargon, and end with who to contact.</pre></div><div class="lane laneB"><b>Lane B · Your turn, on your own work</b>Paste a paragraph from something you wrote recently.</div><div class="plabel">Your turn</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Rewrite this so it is clear, friendly and under [number] words for [audience]. Put the key point first, use active voice, and remove jargon: [paste your text]</pre></div></div></li><li><div class="unit-head"><span class="u">Outlook</span><h4>Copilot Chat in Outlook</h4></div><div class="unit-body"><p>In Outlook, select <b>Copilot</b> to summarize a thread you have open, draft a reply, or coach your writing. Copilot Chat works on the email you are viewing. It does not search your whole mailbox.</p><div class="plabel">Open a long thread · Copilot · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Summarize this email thread in five bullets and list anything I am being asked to do, with dates.</pre></div><div class="plabel">Draft a reply</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Draft a reply confirming we accept the proposal and asking for the updated contract by [date]. Keep it brief and friendly.</pre></div></div></li><li><div class="unit-head"><span class="u">Create</span><h4>An image for a team newsletter</h4></div><div class="unit-body"><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Create a warm, photographic-style image of a modern kitchen at sunrise with a brushed-nickel faucet and a window view of a garden, for our team newsletter. Navy and gold accents. No text and no logos.</pre></div><p class="usecase">Describe the subject, style, colors and mood. Ask for variations until it is right. Avoid real logos and real people.</p></div></li><li><div class="unit-head"><span class="u">Share</span><h4>Pages and documents</h4></div><div class="unit-body"><div class="steps3"><div><span>1</span><b>Edit in Pages:</b> select <b>…</b> under a response › <b>Edit in Pages</b> to keep it and edit it.</div><div><span>2</span><b>Build:</b> add more responses, or type <b>/</b> for a table or checklist.</div><div><span>3</span><b>Share or export:</b> share the page, or ask "Create a Word document of this."</div></div></div></li></ol></article></section><section id="hands"><h2 class="sec">Hands-on · From messy notes to a finished plan<span class="dur">1:00 – 1:15</span></h2>
+<p class="intro">Five prompts in the <b>same chat</b> take you from rough notes to a brief, an agenda and an invitation.</p>
+<div class="lanes"><div class="lane laneA"><b>Lane A · Instructor demo</b>The instructor plans the fictional <b>Fortune Brands Pro Partner Summit 2027</b> from <b>FBIN Pro Partner Summit Planning Notes SAMPLE.docx</b>.</div><div class="lane laneB"><b>Lane B · Your turn, on your own work</b>Plan something real: an event, a team offsite, a project kickoff, a training day or a customer visit. Paste your own notes, or start from a few bullets.</div></div>
+<article class="module"><ol class="units">
+<li><div class="unit-head"><span class="u">Step 1</span><h4>Make sense of the notes</h4><span class="time">3 min</span></div><div class="unit-body"><div class="plabel">Lane B · paste this</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Read these notes for [event or project]. Summarize it in five bullets: purpose, audience, location, dates and budget. Then list every open question and every place where my notes contradict each other. [paste notes or upload the file]</pre></div></div></li>
+<li><div class="unit-head"><span class="u">Step 2</span><h4>Research</h4><span class="time">3 min</span></div><div class="unit-body"><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">What are current best practices for [type of event or project] for [audience]? Give me five ideas that would make it more valuable. Include sources.</pre></div></div></li>
+<li><div class="unit-head"><span class="u">Step 3</span><h4>Build the agenda or plan</h4><span class="time">3 min</span></div><div class="unit-body"><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Draft a [length] agenda or plan using my notes plus your two best ideas from the research. Include times or dates, owners, and the goal of each item. Put it in a table.</pre></div></div></li>
+<li><div class="unit-head"><span class="u">Step 4</span><h4>Write the brief</h4><span class="time">3 min</span></div><div class="unit-body"><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Write a one-page brief with goals, audience, agenda summary, a budget table that stays within [budget], risks, and the decisions still open. Then select Edit in Pages, or ask: Create a Word document of this brief.</pre></div></div></li>
+<li><div class="unit-head"><span class="u">Step 5</span><h4>Invite people</h4><span class="time">3 min</span></div><div class="unit-body"><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Draft an invitation email for [audience]. Warm and professional, under 120 words, with three reasons to attend and a placeholder for the registration or meeting link.</pre></div><div class="plabel">Bonus</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Create a clean, modern banner image for the invitation: [describe the scene], in navy and gold. No text and no logos.</pre></div></div></li>
+</ol></article></section><section id="library"><h2 class="sec">Prompt library</h2><p class="intro">Prompts that work for any role, ready to copy. Each one uses the four elements: <b>goal, context, source, expectations</b>. Replace everything in <mark class="br">[brackets]</mark>. <b>Save the ones that work</b> in a OneNote page or Word document you can share with your team.</p><div class="libtools"><label class="sr" for="libsearch">Search prompts</label><input id="libsearch" type="search" placeholder="Search prompts, for example: email, meeting, supplier, summarize" autocomplete="off"><div class="chips" role="group" aria-label="Filter prompts"><button class="chip on" data-f="all" type="button">All</button><button class="chip" data-f="g:Writing" type="button">Writing</button><button class="chip" data-f="g:Files" type="button">Files</button><button class="chip" data-f="g:Research" type="button">Research</button><button class="chip" data-f="g:Learning" type="button">Learning</button><button class="chip" data-f="g:Ideas" type="button">Ideas</button><button class="chip" data-f="g:Review" type="button">Review</button></div><p class="libcount" aria-live="polite"></p></div><h3 class="libgroup">Writing</h3><div class="libgrid"><article class="libcard" data-group="Writing" data-src="fb" data-text="writing make it clearer copilot chat or outlook rewrite this to be clearer and more concise for [audience]. keep every fact and put the most important point first: [paste text]"><div class="libhead"><h4>Make it clearer</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Writing</b> · Run in: Copilot Chat or Outlook</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Rewrite this to be clearer and more concise for [audience]. Keep every fact and put the most important point first: [paste text]</pre></div></article><article class="libcard" data-group="Writing" data-src="fb" data-text="writing friendly email copilot chat or outlook draft a friendly email to [name] about [topic]. include [key details]. keep it under [number] words and end with a clear next step."><div class="libhead"><h4>Friendly email</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Writing</b> · Run in: Copilot Chat or Outlook</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Draft a friendly email to [name] about [topic]. Include [key details]. Keep it under [number] words and end with a clear next step.</pre></div></article><article class="libcard" data-group="Writing" data-src="fb" data-text="writing tough message copilot chat help me write a message to [audience] about [difficult news]. be honest and empathetic, explain why, say what happens next, and avoid corporate jargon."><div class="libhead"><h4>Tough message</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Writing</b> · Run in: Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Help me write a message to [audience] about [difficult news]. Be honest and empathetic, explain why, say what happens next, and avoid corporate jargon.</pre></div></article></div><h3 class="libgroup">Files</h3><div class="libgrid"><article class="libcard" data-group="Files" data-src="fb" data-text="files summarize a file copilot chat with the file uploaded summarize the attached file in five bullets for someone with two minutes. then list any decisions, deadlines or numbers i should know."><div class="libhead"><h4>Summarize a file</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Files</b> · Run in: Copilot Chat with the file uploaded</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Summarize the attached file in five bullets for someone with two minutes. Then list any decisions, deadlines or numbers I should know.</pre></div></article><article class="libcard" data-group="Files" data-src="fb" data-text="files find the issues in a spreadsheet copilot chat with the file uploaded look at the attached spreadsheet. what are the three most important things it shows, which items are outside the targets, and is any data missing or inconsistent?"><div class="libhead"><h4>Find the issues in a spreadsheet</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Files</b> · Run in: Copilot Chat with the file uploaded</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Look at the attached spreadsheet. What are the three most important things it shows, which items are outside the targets, and is any data missing or inconsistent?</pre></div></article><article class="libcard" data-group="Files" data-src="fb" data-text="files turn notes into a plan copilot chat with the file uploaded turn these notes into a clear plan: goals, tasks with suggested owners and dates, risks, and open questions. put the tasks in a table."><div class="libhead"><h4>Turn notes into a plan</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Files</b> · Run in: Copilot Chat with the file uploaded</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Turn these notes into a clear plan: goals, tasks with suggested owners and dates, risks, and open questions. Put the tasks in a table.</pre></div></article></div><h3 class="libgroup">Research</h3><div class="libgrid"><article class="libcard" data-group="Research" data-src="fb" data-text="research trends with sources copilot chat what are the latest trends in [industry or topic] that matter to a company like fortune brands? give me three, with sources and dates, and say what is uncertain."><div class="libhead"><h4>Trends with sources</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Research</b> · Run in: Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">What are the latest trends in [industry or topic] that matter to a company like Fortune Brands? Give me three, with sources and dates, and say what is uncertain.</pre></div></article><article class="libcard" data-group="Research" data-src="fb" data-text="research prepare for a conversation copilot chat i am meeting [type of customer, supplier or partner] about [topic]. give me background on the topic, five smart questions to ask, and two objections they might raise with suggested responses."><div class="libhead"><h4>Prepare for a conversation</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Research</b> · Run in: Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">I am meeting [type of customer, supplier or partner] about [topic]. Give me background on the topic, five smart questions to ask, and two objections they might raise with suggested responses.</pre></div></article></div><h3 class="libgroup">Learning</h3><div class="libgrid"><article class="libcard" data-group="Learning" data-src="fb" data-text="learning explain it simply copilot chat explain [concept, term or process] as if i were new to the job. use one everyday example and finish with three questions to check my understanding."><div class="libhead"><h4>Explain it simply</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Learning</b> · Run in: Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Explain [concept, term or process] as if I were new to the job. Use one everyday example and finish with three questions to check my understanding.</pre></div></article></div><h3 class="libgroup">Ideas</h3><div class="libgrid"><article class="libcard" data-group="Ideas" data-src="fb" data-text="ideas brainstorm copilot chat give me ten ideas for [team event, process improvement or campaign] for a team of [number] people in [function]. mark the three easiest to start this month."><div class="libhead"><h4>Brainstorm</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Ideas</b> · Run in: Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Give me ten ideas for [team event, process improvement or campaign] for a team of [number] people in [function]. Mark the three easiest to start this month.</pre></div></article><article class="libcard" data-group="Ideas" data-src="fb" data-text="ideas meeting agenda copilot chat create a [length] meeting agenda for [purpose] with [attendees]. include time per topic, the goal of each item, and what people should prepare."><div class="libhead"><h4>Meeting agenda</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Ideas</b> · Run in: Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Create a [length] meeting agenda for [purpose] with [attendees]. Include time per topic, the goal of each item, and what people should prepare.</pre></div></article></div><h3 class="libgroup">Review</h3><div class="libgrid"><article class="libcard" data-group="Review" data-src="fb" data-text="review check your answer copilot chat review your last answer. what might be wrong, missing or out of date? what did you assume? what should i verify before i use it?"><div class="libhead"><h4>Check your answer</h4><div class="tags"><span class="tag src-fb">Fortune Brands prompt</span></div></div><div class="libmeta"><b>Review</b> · Run in: Copilot Chat</div><div class="promptwrap"><button class="copybtn" type="button" aria-label="Copy this prompt">Copy</button><pre class="prompt ">Review your last answer. What might be wrong, missing or out of date? What did you assume? What should I verify before I use it?</pre></div></article></div><p class="libempty" hidden>No prompts match. Clear the search or pick another filter.</p></section><section id="pack"><h2 class="sec">The instructor's sample files (Lane A)</h2><p class="intro">These are the files the instructor uses in the Lane A demos. You don't need them during the session. They are yours to keep for practice later.</p>
+<table><tr><th>File</th><th style="width:16%">Used in</th><th>What is in it</th></tr>
+<tr><td><b>FBIN Q3 Supplier Scorecard SAMPLE.xlsx</b></td><td>Module 4 · Demo 2</td><td>Twelve fictional suppliers across Water, Outdoors and Security with spend, on-time delivery, defect rates, lead times, cost variance and open corrective actions. Includes a few deliberate data gaps.</td></tr>
+<tr><td><b>FBIN Product Announcement Draft SAMPLE.docx</b></td><td>Module 4 · Practice</td><td>A wordy, jargon-heavy internal announcement about a fictional product launch, written to be rewritten.</td></tr>
+<tr><td><b>FBIN Pro Partner Summit Planning Notes SAMPLE.docx</b></td><td>Hands-on</td><td>Messy planning notes for a fictional partner summit, with venue and catering quotes, ideas, open questions and a couple of contradictions.</td></tr></table>
+<p class="intro" style="margin-block-start:14px"><b>All of it is made up.</b> Every company, person and number is fictional content created for training. None of it is Fortune Brands data.</p></section><section id="after"><h2 class="sec">After today</h2><div class="cards3"><div class="card"><h4>Practice daily</h4><p>Use Copilot Chat once a day this week. Start with the email draft-and-refine or the file summary.</p></div><div class="card"><h4>Keep this page</h4><p>Bookmark it. Every prompt stays here, ready to copy. Ask the training team if you want the sample files.</p></div><div class="card"><h4>Keep learning</h4><p>On Microsoft Learn, search "Copilot Chat" for short, free modules, including "Work smarter with Microsoft Copilot Chat". For help, ask your manager or Fortune Brands IT.</p></div></div></section><footer class="page"><p><b>Questions during the session:</b> post them in the Teams chat. The Microsoft account team is monitoring Q&amp;A throughout.</p><p>Fortune Brands · Copilot Chat Training · Thursday 12 November 2026 · Prepared by the Microsoft account team.</p><p>All demonstration data referenced here is fictional sample content created for training. Feature availability depends on your organization's settings and the current Copilot release.</p></footer></main></div>
+<script>
+(function () {
+  "use strict";
+  var LABEL = "Copy", OK = "Copied", ERR = "Select it";
+
+  function reset(btn) {
+    btn.textContent = LABEL;
+    btn.removeAttribute("data-state");
+  }
+
+  function flash(btn, text, state) {
+    btn.textContent = text;
+    btn.setAttribute("data-state", state);
+    window.setTimeout(function () { reset(btn); }, 1800);
+  }
+
+  function selectPre(pre) {
+    try {
+      var range = document.createRange();
+      range.selectNodeContents(pre);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function legacyCopy(pre) {
+    if (!selectPre(pre)) return false;
+    try { return document.execCommand("copy"); } catch (e) { return false; }
+  }
+
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest ? ev.target.closest(".copybtn") : null;
+    if (!btn) return;
+    var pre = btn.parentNode.querySelector("pre.prompt");
+    if (!pre) return;
+    var text = pre.textContent;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        flash(btn, OK, "done");
+      }, function () {
+        var ok = legacyCopy(pre);
+        flash(btn, ok ? OK : ERR, ok ? "done" : "fail");
+      });
+    } else {
+      var ok = legacyCopy(pre);
+      flash(btn, ok ? OK : ERR, ok ? "done" : "fail");
+    }
+  });
+}());
+
+(function(){
+  "use strict";
+  // highlight [brackets] inside prompts (copy text is unchanged)
+  document.querySelectorAll("pre.prompt").forEach(function(pre){
+    var t = pre.textContent;
+    if (t.indexOf("[") < 0) return;
+    pre.innerHTML = t.replace(/[&<>]/g, function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];})
+                     .replace(/\[[^\]\n]{1,80}\]/g, function(m){return '<mark class="br">'+m+'</mark>';});
+  });
+  // toast after copy
+  var toast = document.createElement("div"); toast.className="toast"; toast.setAttribute("role","status");
+  document.body.appendChild(toast);
+  document.addEventListener("click", function(ev){
+    var b = ev.target.closest ? ev.target.closest(".copybtn") : null; if(!b) return;
+    var pre = b.parentNode.querySelector("pre.prompt");
+    var hasBr = pre && /\[[^\]]+\]/.test(pre.textContent);
+    toast.textContent = hasBr ? "Copied. Paste it into Copilot and replace the [brackets]." : "Copied. Paste it into Copilot.";
+    toast.classList.add("show"); clearTimeout(toast._t); toast._t=setTimeout(function(){toast.classList.remove("show");},2200);
+  });
+  // library filter
+  var input = document.getElementById("libsearch"); if(!input) return;
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".libcard"));
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var count = document.querySelector(".libcount"), empty = document.querySelector(".libempty");
+  var groups = Array.prototype.slice.call(document.querySelectorAll("h3.libgroup"));
+  var filt = "all";
+  function apply(){
+    var q = input.value.trim().toLowerCase(), n = 0;
+    cards.forEach(function(c){
+      var ok = true;
+      if (filt.indexOf("src:")===0) ok = c.dataset.src === filt.slice(4);
+      else if (filt.indexOf("g:")===0) ok = c.dataset.group === filt.slice(2);
+      if (ok && q) ok = q.split(/\s+/).every(function(w){return c.dataset.text.indexOf(w)>=0;});
+      c.hidden = !ok; if(ok) n++;
+    });
+    groups.forEach(function(h){ var g=h.nextElementSibling; h.hidden = !g.querySelector(".libcard:not([hidden])"); });
+    count.textContent = n + (n===1?" prompt":" prompts") + " shown";
+    empty.hidden = n>0;
+  }
+  chips.forEach(function(ch){ ch.addEventListener("click", function(){
+    chips.forEach(function(x){x.classList.remove("on");}); ch.classList.add("on"); filt = ch.dataset.f; apply(); }); });
+  input.addEventListener("input", apply); apply();
+}());
+</script>
+</body></html>
